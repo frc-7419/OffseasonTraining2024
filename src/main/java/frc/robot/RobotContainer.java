@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 public class RobotContainer {
   
-  private final CommandXboxController driveJoystick = new CommandXboxController(0);
+  private final CommandXboxController driveJoystick = new CommandXboxController(Constants.Operator.kdriveControllerPort);
 
   public RobotContainer() {
     configureBindings();
