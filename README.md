@@ -3,3 +3,4 @@
  - Make a new branch called "(first name)-(last name)"
  - Push your branch
  - Commit and push your change
+ - Profit!
