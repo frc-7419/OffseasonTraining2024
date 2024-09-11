@@ -1,0 +1,24 @@
+package frc.robot.subsystems;
+
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
+public class ArmSubsytem extends SubsystemBase {
+  /** Creates a new ExampleSubsystem. */
+  private final TalonFX armMotor;
+  public ArmSubsytem() {
+    this.armMotor = new TalonFX(Constants.ShooterConstants.topShooterID, Constants.RobotConstants.kCanbus);
+    armMotor.setInverted(true);
+            }
+
+      public void coast(){
+        armMotor.setNeutralMode(NeutralModeValue.coast);
+      }
+      public void brake(){
+        armMotor.setNeutralMode(NeutralModeValue.brake);
+      }   
+
+  @Override
+  public void periodic() {
+    // This method will be called once per scheduler run
+  }
+}
