@@ -10,12 +10,12 @@ public class ArmSubsytem extends SubsystemBase {
     armMotor.setInverted(true);
             }
 
-      public void coast(){
-        armMotor.setNeutralMode(NeutralModeValue.coast);
-      }
-      public void brake(){
-        armMotor.setNeutralMode(NeutralModeValue.brake);
-      }   
+  public void coast(){
+    armMotor.setNeutralMode(NeutralModeValue.coast);
+  }
+  public void brake(){
+    armMotor.setNeutralMode(NeutralModeValue.brake);
+  }   
 
   @Override
   public void periodic() {
