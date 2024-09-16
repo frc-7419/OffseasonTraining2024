@@ -5,6 +5,10 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import com.ctre.phoenix6.hardware.TalonFX;
+import com.ctre.phoenix6.signals.NeutralModeValue;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 
 public class ArmSubsystem extends SubsystemBase {
   /** Creates a new ArrmSubsystem. */
@@ -15,21 +19,21 @@ public class ArmSubsystem extends SubsystemBase {
   
   }
     public void runMotor (double power){
-      armMotor.setPower (power);
+      armMotor.set(power);
     }
     public void coast (){
-      armMotor.setNeutralMode (NeutralModeValue.coast);
+      armMotor.setNeutralMode(NeutralModeValue.Coast);
 
     }
     public void brake (){
-      armMotor.setNeutralMode (NeutralModeValue.brake);
+      armMotor.setNeutralMode(NeutralModeValue.Brake);
       
     }
 
 
   @Override
   public void periodic() {
-    SmartDashboard.putNumber(key:"Arm motor voltage", armMotor.getMotorVoltage().getValue());
+    SmartDashboard.putNumber("Arm motor voltage", armMotor.getMotorVoltage().getValue());
     // This method will be called once per scheduler run
   }
 }
