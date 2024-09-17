@@ -4,7 +4,7 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix6.hardwarare.TalonFX;
+import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -14,7 +14,7 @@ public class ArmSubsystem extends SubsystemBase {
   private final TalonFX armMotor;
   /** Creates a new ArmSubsystem. */
   public ArmSubsystem() {
-    this.armMotor = new TalonFX(deviceId:0);
+    this.armMotor = new TalonFX(0);
   }
 
   public void runMotor(double power){
