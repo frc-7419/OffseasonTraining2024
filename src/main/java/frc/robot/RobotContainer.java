@@ -25,7 +25,9 @@ public class RobotContainer {
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController m_driverController =
       new CommandXboxController(OperatorConstants.kDriverControllerPort);
-
+  //new stuff
+  private final ArmSubsystem armSubsystem = new ArmSubsystem();
+  private final RunArmWithJoystick runArmWithJoystick = new RunArmWithJoystick(armSubsystem,driveJoystick);
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
