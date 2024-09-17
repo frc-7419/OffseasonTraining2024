@@ -4,13 +4,17 @@
 
 package frc.robot;
 
+import edu.wpi.first.math.controller.ArmFeedforward;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.robot.commands.RunArm;
+import frc.robot.subsystems.ArmSubsystem;
 
 public class RobotContainer {
-  
+  private final ArmSubsystem arm = new ArmSubsystem();
   private final CommandXboxController driveJoystick = new CommandXboxController(Constants.Operator.kdriveControllerPort);
+  private final RunArm runArmwithJoyStick = new RunArm(arm, driveJoystick);
 
   public RobotContainer() {
     configureBindings();
