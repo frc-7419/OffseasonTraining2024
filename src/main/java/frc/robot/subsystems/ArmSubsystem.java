@@ -10,6 +10,7 @@ public class ArmSubsystem extends SubsystemBase {
 private final TalonFX armMotor;
     public ArmSubsystem() {
       this.armMotor = new TalonFX(0);
+     
     }
 
     public void coast(){

@@ -14,6 +14,7 @@ public class RunArmWithJoystick extends Command {
 
   private final ArmSubsystem armSubsystem;
   private final CommandXboxController joyStick;
+  
   public RunArmWithJoystick(ArmSubsystem armSubsystem, CommandXboxController joystick) {
     this.armSubsystem = armSubsystem;
     this.joyStick = joystick;
@@ -27,6 +28,7 @@ public class RunArmWithJoystick extends Command {
   @Override
   public void execute() {
     armSubsystem.setPower(joyStick.getLeftY());
+
   }
 
   // Called once the command ends or is interrupted.
