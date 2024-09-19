@@ -14,8 +14,8 @@ public class RunArmWithJoystick extends Command {
   private final ArmSubsystem arm;
   private final CommandXboxController joystick;
 
-  public RunArmWithJoystick(ArmSubsystem armsubsystem, CommandXboxController joystick) {
-    this.armsubsystem = arm;
+  public RunArmWithJoystick(ArmSubsystem armSubsystem, CommandXboxController joystick) {
+    this.armSubsystem = arm;
     this.joystick = joystick;
     addRequirements(arm);
   }
@@ -28,7 +28,7 @@ public class RunArmWithJoystick extends Command {
   @Override
   public void execute() {
     arm.runMotor(joystick.getLeftY());
-
+    
     if (joystick.leftBumper().getAsBoolean()) {
       arm.runMotor(0.5);
     }
