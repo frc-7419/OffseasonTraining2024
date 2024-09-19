@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsystems.ArmSubsystem;
 
 public class RunArmWithJoystick extends Command {
-  
+
   private final ArmSubsystem arm;
   private final CommandXboxController joystick;
 
@@ -28,6 +28,10 @@ public class RunArmWithJoystick extends Command {
   @Override
   public void execute() {
     arm.runMotor(joystick.getLeftY());
+
+    if (joystick.leftBumper().getAsBoolean()) {
+      arm.runMotor(0.5);
+    }
   }
 
   @Override
