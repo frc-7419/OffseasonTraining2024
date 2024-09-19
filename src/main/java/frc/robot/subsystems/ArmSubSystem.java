@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class ArmSubSystem extends SubsystemBase {
   /** Creates a new ArmSubSystem. */
   private final TalonFX armMotor;
-  public ArmSubSystem() {
+  public armSubSystem() {
     this.armMotor = new TalonFX(0);
   }
   public void runMotor(double power) { 
@@ -27,6 +27,6 @@ public class ArmSubSystem extends SubsystemBase {
   }
   @Override
   public void periodic() {
-    SmartDashboard.putNumber("Arm motor Voltage", armMotor.getMotorVoltage().getValue());
+    SmartDashboard.putNumber("Arm motor Voltage", armMotor.getMotorVoltage().getValue()); //bonus
   }
 }

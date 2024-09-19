@@ -15,7 +15,7 @@ public class RunArmWithJoystick extends Command {
     // Use addRequirements() here to declare subsystem dependencies.
     this.arm = arm;
     this.joystick = joystick;
-    addRequirements(arm);
+    addRequirements(arm); //dont forget
   }
 
   // Called when the command is initially scheduled.
@@ -28,6 +28,8 @@ public class RunArmWithJoystick extends Command {
   @Override
   public void execute() {
     arm.runMotor(joystick.getLeftY());
+    if joystick.leftBumper().getAsBoolean():
+      arm.Brake();
   }
 
   // Called once the command ends or is interrupted.
