@@ -1,4 +1,8 @@
-package frc.robot.subsystems;
+package frc.robot.Subsystems;
+
+import java.nio.file.attribute.FileOwnerAttributeView;
+
+import com.ctre.phoenix6.signals.NeutralModeValue;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -15,11 +19,11 @@ public void setPower(double power){
   }
 
 public void coast() {
-    armMotor.setNeutralMode(NeutralModeValue.coast);
+    armMotor.setNeutralMode(NeutralModeValue.Coast);
   }
 
 public void brake(){
-    armMotor.setNeutralMode(NeutralModeValue.brake);
+    armMotor.setNeutralMode(NeutralModeValue.Brake);
   }   
 
 @Override
