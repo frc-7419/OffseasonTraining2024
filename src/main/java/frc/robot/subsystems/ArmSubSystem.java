@@ -8,25 +8,21 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ArmSubSystem extends SubsystemBase {
   /** Creates a new ArmSubSystem. */
-  private final TalonFx armMotor;
+  private final TalonFX armMotor;
   public ArmSubSystem() {
-    this.armMotor = new TalonFx(deviceId:0);
+    this.armMotor = new TalonFX(0);
   }
   public void runMotor(double power) { 
-    armoMotor.set(power);
+    armMotor.set(power);
 
 
-  }
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
   }
   public void coast() {
     armMotor.setNeutralMode(NeutralModeValue.Coast);
 
   }
   public void brake() {
-    armMotor.setNeutralMode(NeutralModeValue.brake)
+    armMotor.setNeutralMode(NeutralModeValue.Brake);
 
   }
   @Override
