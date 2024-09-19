@@ -1,0 +1,8 @@
+for the assessment - one sybsystem and one command (command has to use joystick to control something and also a button will need to be used so button bindings will need to be known)
+
+joystick.rightBumper()
+
+mechanism will need to be made
+
+difficulty is comparable to the arm command/subsystem
+    - it's the arm + placing stuff from the arm
