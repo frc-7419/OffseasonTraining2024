@@ -11,7 +11,7 @@ public class ArmSubsystem extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
   private final TalonFX armMotor;
   public ArmSubsystem() {
-    this.armMotor = new TalonFX(Constants.ShooterConstants.topShooterID, Constants.RobotConstants.kCanbus);
+    this.armMotor = new TalonFX(0);
       }
 
   public void coast(){

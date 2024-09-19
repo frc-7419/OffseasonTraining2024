@@ -9,19 +9,26 @@ import frc.robot.subsystems.ArmSubsystem;
 
 public class ExampleCommand extends Command {
   /** Creates a new ExampleCommand. */
-  private final armSubsystem;
-  public ExampleCommand() {
+  private final ArmSubsystem armSubsystem;
+  private final CommandXboxController joystick;
+  public ExampleCommand(ArmSubsystem armSubsystem, CommandXboxController joystick) {
+    this.armSubsystem = armSubsystem;
+    this.joystick = joystick;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirments()
+    addRequirements(armSubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    armSubsystem.coast();
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    armSubsystem.setPower(joystick.rightBumper());
+  }
 
   // Called once the command ends or is interrupted.
   @Override
