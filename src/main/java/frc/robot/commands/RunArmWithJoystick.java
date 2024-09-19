@@ -12,8 +12,8 @@ public class RunArmWithJoystick extends Command {
   private final ArmSubsystem arm;
   private final CommandXboxController joystick;
 
-  public RunArmWithJoystick(ArmSubsystem arm, CommandXboxController joystick) {
-    this.arm = arm;
+  public RunArmWithJoystick(ArmSubsystem armsubsystem, CommandXboxController joystick) {
+    this.armsubsystem = arm;
     this.joystick = joystick;
     addRequirements(arm);
   }
