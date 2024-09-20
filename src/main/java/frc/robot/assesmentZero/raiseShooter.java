@@ -36,7 +36,7 @@ public raiseShooter (shootersubsystem shooterSubsystem, CommandXboxController jo
   @Override
   public void execute() {
 
-    armSubystem.setArmRaiseMotorPower(joystick.rightBumper());
+    shooterSubystem.setArmRaiseMotorPower //use joystick
 
 
   }
