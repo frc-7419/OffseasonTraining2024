@@ -17,13 +17,13 @@ public class ShooterSubsystem extends SubsystemBase {
   private TalonFX wheelMotor1;
   private TalonFX wheelMotor2;
   /** Creates a new ShooterSubsystem. */
-  public ShooterSubsystem(TalonFX shooterMotor, TalonFX wheelMotor1, TalonFX wheelMotor2) {
-    this.shooterMotor = shooterMotor;
-    this.wheelMotor1 = wheelMotor1;
-    this.wheelMotor2 = wheelMotor2;
+  public ShooterSubsystem() {
+    shooterMotor = new TalonFX(0);
+    wheelMotor1 = new TalonFX(1);
+    wheelMotor2 = new TalonFX(2);
   }
 
-  public void setAngle(double power) {
+  public void setPower(double power) {
       shooterMotor.set(power);
   }
   public void setPowerWheelMotor(double power) {
@@ -40,6 +40,11 @@ public class ShooterSubsystem extends SubsystemBase {
     wheelMotor2.setNeutralMode(NeutralModeValue.Coast);
     shooterMotor.setNeutralMode(NeutralModeValue.Coast);
   
+  }
+  public void brake() {
+    wheelMotor1.setNeutralMode(NeutralModeValue.Brake);
+    wheelMotor2.setNeutralMode(NeutralModeValue.Brake);
+    shooterMotor.setNeutralMode(NeutralModeValue.Brake);
   }
 
 

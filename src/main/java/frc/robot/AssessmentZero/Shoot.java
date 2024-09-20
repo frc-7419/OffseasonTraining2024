@@ -38,7 +38,7 @@ public class Shoot extends Command {
       shooterSubsystem.stopMotor();
     }
 
-    shooterSubsystem.setAngle(xboxController.getRightY());
+    shooterSubsystem.setPower(xboxController.getRightY());
     SmartDashboard.putNumber("Shooter", xboxController.getRightY());
 
 
