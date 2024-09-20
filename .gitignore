@@ -1,0 +1,5 @@
+gradle
+.wpilib
+.vscode
+.gradle
+build
