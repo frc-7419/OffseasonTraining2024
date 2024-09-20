@@ -8,12 +8,12 @@ import edu.wpi.first.wpilibj2.command.Command;
 
 public class RunArmWithJoystick extends Command {
   /** Creates a new RunArmWithJoystick. */
-  private final ArmSubSystem arm;
-  private final CommandXboxController joystick;
+  private final ArmSubSystem arm; //declare arm from arm subsytem
+  private final CommandXboxController joystick; //declare joystick for this command
 
   public RunArmWithJoystick(ArmSubSystem arm, CommandXboxController joystick) {
     // Use addRequirements() here to declare subsystem dependencies.
-    this.arm = arm;
+    this.arm = arm; //the joystick for this class = the joystick in commandxbox controller
     this.joystick = joystick;
     addRequirements(arm); //dont forget
   }
@@ -27,8 +27,8 @@ public class RunArmWithJoystick extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    arm.runMotor(joystick.getLeftY());
-    if joystick.leftBumper().getAsBoolean():
+    arm.runMotor(joystick.getLeftY()); //gets a y value on the joystick in percent to move the motor
+    if joystick.leftBumper().getAsBoolean(): //brakes arm of the right bumper is clicker.
       arm.Brake();
   }
 
