@@ -7,6 +7,7 @@ package frc.robot.assesmentZero;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class shootersubsystem extends SubsystemBase {
@@ -29,22 +30,22 @@ public class shootersubsystem extends SubsystemBase {
       armRaiseMotor.setNeutralMode (NeutralModeValue.Coast);
 
     }
-    public void brakeRaiseMotor (){
+    public void brakeArmRaiseMotor (){
       armRaiseMotor.setNeutralMode (NeutralModeValue.Brake);
 
     }
 
-    public void revvShooterMotors (double power){
+    public void RevvShooterMotors (double power){
 
       revShooter1.set(power);
       revShooter2.set(power);
     }
-    public void coastArmRaiseMotor (){
+    public void coastArmShooterMotor (){
       revShooter1.setNeutralMode (NeutralModeValue.Coast);
       revShooter2.setNeutralMode (NeutralModeValue.Coast);
 
     }
-    public void brakeRaiseMotor (){
+    public void brakeShooterMotor (){
       revShooter1.setNeutralMode (NeutralModeValue.Brake);
       revShooter2.setNeutralMode (NeutralModeValue.Brake);
 
@@ -54,6 +55,13 @@ public class shootersubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-
+    if (armRaiseMotor.getMotorVoltage().getValue() > 0 ){
+      SmartDashboard.putString("Status of arm", "Raising arm");
+    
+    }else{
+      SmartDashboard.putString("Status of arm", "not raising  arm");
+    }
+    
+    
   }
 }
