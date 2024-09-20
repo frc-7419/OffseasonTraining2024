@@ -5,18 +5,21 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.ArmSubsystem;
 
 public class MoveArmWithJoystick extends Command {
   /** Creates a new MoveArmWithJoystick. */
   private final Joystick joystick;
+  private final XboxController xboxController;
   private final ArmSubsystem armSubsystem;
 
   public MoveArmWithJoystick() {
     // Use addRequirements() here to declare subsystem dependencies.
     this.joystick = new Joystick(0);
     this.armSubsystem = new ArmSubsystem();
+    this.xboxController = new XboxController(0);
   }
 
   // Called when the command is initially scheduled.
@@ -28,11 +31,12 @@ public class MoveArmWithJoystick extends Command {
   public void execute() {
     if (joystick.getRawButtonPressed(0))
     {
-      armSubsystem.runMotor(0.5);
+      armSubsystem.runMotor(0.5, false);
     }
     else{
       armSubsystem.brake();
     }
+
   }
 
   // Called once the command ends or is interrupted.

@@ -2,33 +2,23 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands;
+package assessmentZero;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.ArmSubsystem;
 
-public class RunArm extends Command {
-  private final ArmSubsystem armSubsystem;
-  /** Creates a new RunArm. */
-  public RunArm() {
-    this.armSubsystem = new ArmSubsystem();
-    
-
+public class JoystickControl extends Command {
+  /** Creates a new JoystickControl. */
+  public JoystickControl() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-    armSubsystem.coast();
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-    armSubsystem.runMotor(0.5, false);
-    
-  }
+  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override
@@ -37,7 +27,6 @@ public class RunArm extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    armSubsystem.brake();
     return false;
   }
 }

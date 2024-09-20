@@ -18,7 +18,8 @@ public class ArmSubsystem extends SubsystemBase {
     this.armMotor = new TalonFX(0);
   
   }
-    public void runMotor (double power){
+    public void runMotor (double power, boolean setInverted){
+      armMotor.setInverted(setInverted);
       armMotor.set(power);
     }
     public void coast (){
