@@ -16,7 +16,7 @@ public class RobotContainer {
   
   private final CommandXboxController driveJoystick = new CommandXboxController(Constants.Operator.kdriveControllerPort);
   private final ArmSubsystem arm = new ArmSubsystem();
-  private final RunArmWithJoystick runArmWithJoystick = new RunArmWithjoystick(arm, driveJoystick);
+  private final RunArmWithJoystick runArmWithJoystick = new RunArmWithJoystick(arm, driveJoystick);
 
   public RobotContainer() {
     configureBindings();
@@ -31,6 +31,6 @@ public class RobotContainer {
   }
 
   public void setDefaultCommands() {
-    arm.setDefaultCommand(runArmWithjoystick);
+    arm.setDefaultCommand(runArmWithJoystick);
   }
 }
