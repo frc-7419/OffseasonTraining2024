@@ -41,6 +41,7 @@ public class RunShooterArm extends Command {
   @Override
   public void end(boolean interrupted) {
     //when command ends, brake all motors
+    
     shooterSubsystem.brakeRevShooterMotors();
     shooterSubsystem.brakeShooterArm();
   }
