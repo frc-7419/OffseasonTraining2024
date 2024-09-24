@@ -31,7 +31,10 @@ public class RobotContainer {
   //Loader and Intake Subsystems
   private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
   private final LoaderSubsystem loaderSubsystem = new LoaderSubsystem();
-  private final CommandXboxController joystick = new Joystick() //This joystick can be used for controlling both intake and loader.
+  
+  //Alternative
+  private final IntakeCommand intakeCommand = new IntakeCommand(intakeSubsystem, driveJoystick);
+  private final LoaderCommand loaderCommand = new LoaderCommand(loaderSubsystem, driveJoystick);
 
 
 public RobotContainer() {
@@ -62,5 +65,9 @@ public RobotContainer() {
     arm.setDefaultCommand(runArmWithJoystick);
     intake.setDefaultCommand(intakebutton);
     loader.setDefaultCommand(loaderloaderbutton)
+
+    //Alternative
+    intake.setDefaultCommand(intakeCommand)
+    loader.setDefaultCommand(loaderCommand)
   }
 }
