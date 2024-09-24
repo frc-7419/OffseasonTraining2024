@@ -1,0 +1,172 @@
+package frc.robot.commands;
+
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.LoaderSubsystem;
+
+import com.ctre.phoenix6.hardware.Falcon;
+import com.ctre.phoenix6.signals.NeutralModeValue;
+
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
+// INTAKE
+
+public class RunIntakeWithJoystick extends Command {
+  private final IntakeSubsystem intakewheels;
+  private final CommandXboxController joystick;
+
+  public RunIntakeWithJoystick(IntakeSubsystem intakewheels, CommandXboxController joystick) {
+    this.intakewheels;
+    this.joystick = joystick;
+    addRequirements(intakewheels);
+
+public class IntakeSubsystem extends SubsystemBase {
+  private final Falcon intaketopMotor;
+
+  public IntakeSubsystem() {
+    this.intaketopMotor = new Falcon(0.1);
+  }
+
+  public void runMotor(double power) {
+    intaketopMotor.set(power);
+  }
+
+  public void coast() {
+    intaketopMotor.setNeutralMode(NeutralModeValue.Coast);
+  }
+
+  public void brake() {
+    intaketopMotor.setNeutralMode(NeutralModeValue.Brake);
+  }
+  public class IntakeSubsystem extends SubsystemBase {
+    private final Falcon intakebottomMotor;
+  
+    public IntakeSubsystem() {
+      this.intakebottomMotor = new Falcon(0.1);
+    }
+  
+    public void runMotor(double power) {
+      intakebottomMotor.set(power);
+    }
+  
+    public void coast() {
+      intakebottomMotor.setNeutralMode(NeutralModeValue.Coast);
+    }
+  
+    public void brake() {
+      intakebottomMotor.setNeutralMode(NeutralModeValue.Brake);
+    }
+  
+
+  @Override
+  public void periodic() {
+    SmartDashboard.putNumber("Intake top motor voltage", intaketopMotor.getMotorVoltage().getValue());
+    SmartDashboard.putnumber("Intake bottom motor voltage", intakebottomMotor.getMotorVoltage().getValue());
+  }
+}
+
+    public RunIntakeWithJoystick (IntakeSubsystem intakewheels, CommandXboxController joystick)
+  }
+
+  @Override
+  public void initialize() {
+    intakewheels.coast();
+  }
+
+  @Override
+  public void execute() {
+    intakewheels.runMotor(joystick.getLeftY());
+  }
+
+  @Override
+  public void end(boolean interrupted) {
+    intakewheels.brake();
+  }
+
+  @Override
+  public boolean isFinished() {
+    return false;
+  }
+}
+
+// LOADER
+
+public class RunLoaderWithJoystick extends Command {
+    private final LoaderSubsystem loaderwheels;
+    private final CommandXboxController joystick;
+  
+    public RunLoaderWithJoystick(LoaderSubsystem loaderwheels, CommandXboxController joystick) {
+      this.loaderwheels;
+      this.joystick = joystick;
+      addRequirements(loaderwheels);
+  
+  public class LoaderSubsystem extends SubsystemBase {
+    private final Falcon loadertopMotor;
+  
+    public LoaderSubsystem() {
+      this.loadertopMotor = new Falcon(0.1);
+    }
+  
+    public void runMotor(double power) {
+      loadertopMotor.set(power);
+    }
+  
+    public void coast() {
+      loadertopMotor.setNeutralMode(NeutralModeValue.Coast);
+    }
+  
+    public void brake() {
+      loadertopMotor.setNeutralMode(NeutralModeValue.Brake);
+    }
+    public class LoaderSubsystem extends SubsystemBase {
+      private final Falcon loaderbottomMotor;
+    
+      public LoaderSubsystem() {
+        this.loaderottomMotor = new Falcon(0.1);
+      }
+    
+      public void runMotor(double power) {
+        loaderbottomMotor.set(power);
+      }
+    
+      public void coast() {
+        loaderbottomMotor.setNeutralMode(NeutralModeValue.Coast);
+      }
+    
+      public void brake() {
+        loaderbottomMotor.setNeutralMode(NeutralModeValue.Brake);
+      }
+    
+  
+    @Override
+    public void periodic() {
+      SmartDashboard.putNumber("Loader top motor voltage", loadertopMotor.getMotorVoltage().getValue());
+      SmartDashboard.putnumber("Loader bottom motor voltage", loaderbottomMotor.getMotorVoltage().getValue());
+    }
+  }
+  
+      public RunLoaderWithJoystick (LoaderSubsystem loaderwheels, CommandXboxController joystick)
+    }
+  
+    @Override
+    public void initialize() {
+      loaderwheels.coast();
+    }
+  
+    @Override
+    public void execute() {
+      loaderwheels.runMotor(joystick.getRightX());
+    }
+  
+    @Override
+    public void end(boolean interrupted) {
+      loaderwheels.brake();
+    }
+  
+    @Override
+    public boolean isFinished() {
+      return false;
+    }
+  }
+  
