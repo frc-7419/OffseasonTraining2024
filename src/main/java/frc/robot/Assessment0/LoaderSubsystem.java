@@ -10,11 +10,11 @@ import com.ctre.phoenix6.signals.NeutralModeValue;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class Loader extends SubsystemBase {
+public class LoaderSubsystem extends SubsystemBase {
   TalonFX loader1;
   TalonFX loader2;
   /** Creates a new Intake. */
-  public Loader() {
+  public LoaderSubsystem() {
     loader1 = new TalonFX(2);
     loader2 = new TalonFX(3);
     loader2.setInverted(true);
@@ -38,6 +38,6 @@ public class Loader extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    SmartDashboard.putNumber("Intake Voltage ", loader1.getMotorVoltage().getValue());
+    SmartDashboard.putNumber("Loader Voltage ", loader1.getMotorVoltage().getValue());
   }
 }

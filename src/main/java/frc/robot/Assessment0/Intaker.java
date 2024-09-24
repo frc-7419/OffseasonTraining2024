@@ -9,12 +9,12 @@ import edu.wpi.first.wpilibj2.command.Command;
 
 public class Intaker extends Command {
   XboxController xboxController;
-  Intake intake;
-  Loader loader;
+  IntakeSubsystem intake;
+  LoaderSubsystem loader;
   boolean intaking = false;
   boolean loading = false;
   /** Creates a new Intaker. */
-  public Intaker(Intake intake, Loader loader, XboxController xboxController) {
+  public Intaker(IntakeSubsystem intake, LoaderSubsystem loader, XboxController xboxController) {
     this.xboxController = xboxController;
     this.intake = intake;
     this.loader = loader;

@@ -12,11 +12,11 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class Intake extends SubsystemBase {
+public class IntakeSubsystem extends SubsystemBase {
   TalonFX intake1;
   TalonFX intake2;
   /** Creates a new Intake. */
-  public Intake() {
+  public IntakeSubsystem() {
     intake1 = new TalonFX(0);
     intake2 = new TalonFX(1);
     intake2.setInverted(true);
