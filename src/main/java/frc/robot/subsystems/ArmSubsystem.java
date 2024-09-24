@@ -4,7 +4,7 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix6.hardware.TalonFX;
+import com.ctre.phoenix6.hardwarare.TalonFX;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -20,6 +20,7 @@ public class ArmSubsystem extends SubsystemBase {
   public void runMotor(double power){
     armMotor.set(power);
   }
+
   public void coast(){
     armMotor.setNeutralMode(NeutralModeValue.Coast);
   }

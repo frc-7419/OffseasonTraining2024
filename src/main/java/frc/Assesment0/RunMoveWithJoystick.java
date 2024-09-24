@@ -2,42 +2,39 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands;
+package frc.Assesment0;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import frc.robot.subsystems.ArmSubsystem;
 
-public class RunArmWithJoystick extends Command {
-  private final ArmSubsystem arm;
+public class RunMoveWithJoystick extends Command {
+  private final MoveSubsystem move;
   private final CommandXboxController joystick;
-  /** Creates a new RunArmWithJoystick. */
 
-  public RunArmWithJoystick(ArmSubsystem arm, CommandXboxController joystick) {
-    this.arm = arm;
+  /** Creates a new RunMoveWithJoystick. */
+  public RunMoveWithJoystick(MoveSubsystem move, CommandXboxController joystick) {
+    this.move = move;
     this.joystick = joystick;
-    addRequirements(arm);
     // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(move);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    arm.coast();
+    move.coast();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    arm.runMotor(joystick.getLeftY());
-    // button example
-    joystick.rightBumper().getAsBoolean();
+    move.runMotor(joystick.getRightX());
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    arm.brake();
+    move.Break();
   }
 
   // Returns true when the command should end.
