@@ -32,6 +32,9 @@ public class LoaderSubsystem extends SubsystemBase {
         loaderMotorTop.set(ControlMode.PercentOutput, 0);
         loaderMotorBottom.set(ControlMode.PercentOutput, 0);
     }
-    SmartDashboard.putNumber("Loader top motor voltage", loaderMotorTop.getMotorVoltage().getValue());
-    SmartDashboard.putNumber("Loader bottom motor voltage", loaderMotorBottom.getMotorVoltage().getValue());
+    public void periodic(){
+        SmartDashboard.putNumber("Loader top motor voltage", loaderMotorTop.getMotorVoltage().getValue());
+        SmartDashboard.putNumber("Loader bottom motor voltage", loaderMotorBottom.getMotorVoltage().getValue());
+    }
+    
 }

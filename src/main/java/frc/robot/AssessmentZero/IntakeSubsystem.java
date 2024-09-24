@@ -32,8 +32,10 @@ public class IntakeSubsystem extends SubsystemBase {
         intakeMotorTop.set(ControlMode.PercentOutput, 0);
         intakeMotorBottom.set(ControlMode.PercentOutput, 0);
     }
-
-    SmartDashboard.putNumber("Intake top motor voltage", intakeMotorTop.getMotorVoltage().getValue());
-    SmartDashboard.putNumber("Intake bottom motor voltage", intakeMotorBottom.getMotorVoltage().getValue());
+    public voice periodic() {
+        SmartDashboard.putNumber("Intake top motor voltage", intakeMotorTop.getMotorVoltage().getValue());
+        SmartDashboard.putNumber("Intake bottom motor voltage", intakeMotorBottom.getMotorVoltage().getValue());
+    }
+    
 
 }

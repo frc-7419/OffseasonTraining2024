@@ -28,7 +28,7 @@ public class LoaderCommand extends CommandBase {
 
     @Override
     public void end(boolean interrupted) {
-        loaderSubsystem.stopIntake();
+        loaderSubsystem.stopLoader();
     }
 
     @Override
