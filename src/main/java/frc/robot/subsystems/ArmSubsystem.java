@@ -30,7 +30,9 @@ public class ArmSubsystem extends SubsystemBase {
       armMotor.setNeutralMode(NeutralModeValue.Brake);
       
     }
-
+    public double getPosition(){
+      return armMotor.getPosition().getValue();
+    }
 
   @Override
   public void periodic() {

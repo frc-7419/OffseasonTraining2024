@@ -9,21 +9,24 @@ import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.ArmSubsystem;
 
-public class PIDthings extends Command {
-  PIDController pidController = new PIDController(0, 0, 0);
-  ArmFeedforward feedforward = new ArmFeedforward(0, 0, 0);
+public class SetArmToPoint extends Command {
+  PIDController pidController = new PIDController(1.0, 0.0, 0.1);
+  ArmFeedforward feedforward = new ArmFeedforward(0.0, 1.0, 0.5,0.1);
   private final ArmSubsystem armSubsystem;
   public final double setpos;
   /** Creates a new PIDthings. */
-  public PIDthings(double setpos) {
+  public SetArmToPoint(double setpos, ArmSubsystem armSubsystem) {
     this.setpos = setpos;
-    this.armSubsystem = new ArmSubsystem();
+    this.armSubsystem = armSubsystem;
+    addRequirements(armSubsystem);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    armSubsystem.coast();
+    armSubsystem.runMotor(0, false);
     pidController.setSetpoint(setpos);
     pidController.setTolerance(5, 10);
     
@@ -39,11 +42,14 @@ public class PIDthings extends Command {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    armSubsystem.runMotor(0, false);
+    armSubsystem.brake();
+  }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return pidController.atSetpoint();
   }
 }

@@ -33,11 +33,13 @@ public class IntakeSubsystem extends SubsystemBase {
   }
 
   public void RunIntake(){
-    intakeMotor1.set(speed);
+    intakeMotor0.set(speed);
     intakeMotor1.set(speed);
   }
   @Override
   public void periodic() {
+    SmartDashboard.putNumber("First Intake Voltage: ", intakeMotor0.getMotorVoltage().getValue());
+    SmartDashboard.putNumber("Second Intake Voltage: ", intakeMotor1.getMotorVoltage().getValue());
     // This method will be called once per scheduler run
   }
 }
