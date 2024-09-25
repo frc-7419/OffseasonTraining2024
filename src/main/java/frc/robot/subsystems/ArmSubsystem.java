@@ -1,4 +1,4 @@
-package frc.robot.subsystems;
+package frc.robot.Subsystems;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
@@ -22,7 +22,13 @@ private final TalonFX armMotor;
     public void setPower(double power){
         armMotor.set(power);
     }
-
+    /*public float lerp(float a, float b, float f) 
+  {
+      return (a * (1 - f)) + (b * f);
+  }*/
+    public double getPosition(){
+      return armMotor.getPosition().getValueAsDouble();
+    }
   @Override
   public void periodic() {
     SmartDashboard.putNumber("arm motor voltage", armMotor.getMotorVoltage().getValue());
