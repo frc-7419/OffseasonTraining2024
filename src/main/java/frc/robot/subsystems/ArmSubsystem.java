@@ -27,7 +27,11 @@ public class ArmSubsystem extends SubsystemBase {
         armMotor.setPower(xBoxController.LeftY());
         //armMotor.set(power)
     }
-
+    public double getPosition(){
+        return armMotor.getPosition().getValue();
+        
+        //position of actual motor
+    }
     
   }
   @Override
@@ -41,6 +45,7 @@ public class ArmSubsystem extends SubsystemBase {
   public void simulationPeriodic() {
     // This method will be called once per scheduler run during simulation
   }
+
 }
 
 

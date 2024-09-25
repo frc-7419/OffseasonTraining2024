@@ -28,6 +28,8 @@ public class ShootProjectile extends CommandBase {
   @Override
   public void execute() {
     shooterAngleMotor.runShooterMotor(joystick.getLeftY());
+
+    joystick.leftBumper().getAsBooleanValue();
     topShooterMotor.runShooterMotor(rawButtomPressed());
     bottomShooterMotor.runShooterMotor(rawButtomPressed());
   }
