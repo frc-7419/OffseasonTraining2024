@@ -27,8 +27,8 @@ public class RunShooter extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    shooter.runShooter(joystick.getLeftY());
-    // shooter.runShooter(power);
+    // shooter.runShooter(joystick.getLeftY());
+    shooter.runShooter(joystick.a().getAsBoolean()?power:0);
   }
 
   // Called once the command ends or is interrupted.
