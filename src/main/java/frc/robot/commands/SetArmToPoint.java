@@ -9,7 +9,7 @@ public class SetArmToPoint extends CommandBase {
     private final ArmSubsystem armSubsystem;
     private double setpoint;
     private final PIDController pidController = new PidController(1.0,0.0,0.1);
-    private final ArmFeedforward feedforward = ArmFeedforward(0.0,1.0,0.5,0.1);
+    private final ArmFeedforward feedforward = new ArmFeedforward(0.0,1.0,0.5,0.1);
 
 
   public SetArmToPoint (ArmSubsystem armSubsystem, double setpoint) {
@@ -23,7 +23,6 @@ public class SetArmToPoint extends CommandBase {
   public void initialize() {
     armSubsystem.coast():
     armSubsystem.setPower(0);
-    pidController.setGoal(setpoint);
     pidController.setTolerance(5,10);
     pidController.setSetpoint(setPoint);
     
