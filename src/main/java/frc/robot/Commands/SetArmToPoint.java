@@ -17,6 +17,7 @@ public class SetArmToPoint extends Command {
   public SetArmToPoint(ArmSubsystem armSubsystem, double setPoint) {
     this.armSubsystem = armSubsystem;
     this.setPoint = setPoint;
+    addRequirements(armSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -32,7 +33,7 @@ public class SetArmToPoint extends Command {
   @Override
   public void execute() {
     double currentPosition = armSubsystem.getPosition();
-    double ff = armFeedforward.calculate(currentPosition,setPoint);
+    double ff = armFeedforward.calculate(currentPosition,5);
     armSubsystem.setPower(ff + pidController.calculate(currentPosition));
 
   }

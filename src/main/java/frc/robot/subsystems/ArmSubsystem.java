@@ -27,7 +27,7 @@ private final TalonFX armMotor;
       return (a * (1 - f)) + (b * f);
   }*/
     public double getPosition(){
-      return armMotor.getPosition().getValueAsDouble();
+      return armMotor.getPosition().getValue();
     }
   @Override
   public void periodic() {
