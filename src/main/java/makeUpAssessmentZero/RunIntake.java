@@ -2,42 +2,43 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package assessmentZeroPartTwo;
+package makeUpAssessmentZero;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 
-public class ControlShooterWithJoystick extends Command {
-  /** Creates a new ControlShooterWithJoystick. */
-  private final ShooterRevSubsystem shooterSubsystem;
-  private final ShooterAngleSubsystem shooterAngleSubsystem;
+public class RunIntake extends Command {
+  /** Creates a new RunIntake. */
+  private final IntakeSubsystem intakeSubsystem;
   private final XboxController xboxController;
-  public ControlShooterWithJoystick() {
-    // Use addRequirements() here to declare subsystem dependencies.
-    this.shooterSubsystem = new ShooterRevSubsystem();
+  public RunIntake() {
+    this.intakeSubsystem = new IntakeSubsystem(1);
     this.xboxController = new XboxController(0);
-    this.shooterAngleSubsystem = new ShooterAngleSubsystem();
+    // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    intakeSubsystem.CoastIntake();
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     if (xboxController.getAButtonPressed()){
-      shooterSubsystem.RevShooter(1);
+      intakeSubsystem.RunIntake();
     }
     else{
-      shooterSubsystem.BrakeShooter();
+      intakeSubsystem.BrakeIntake();
     }
-    shooterAngleSubsystem.AngleShooter(xboxController.getLeftY(), false);
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    intakeSubsystem.BrakeIntake();
+  }
 
   // Returns true when the command should end.
   @Override

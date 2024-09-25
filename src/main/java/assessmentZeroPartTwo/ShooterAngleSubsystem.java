@@ -4,11 +4,27 @@
 
 package assessmentZeroPartTwo;
 
+import com.ctre.phoenix6.hardware.TalonFX;
+import com.ctre.phoenix6.signals.NeutralModeValue;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ShooterAngleSubsystem extends SubsystemBase {
+  public final TalonFX shooterAngle;
   /** Creates a new ShooterAngleSubsystem. */
-  public ShooterAngleSubsystem() {}
+  public ShooterAngleSubsystem() {
+    this.shooterAngle = new TalonFX(3);
+  }
+
+  public void AngleShooter(double power, boolean setInverted){
+    shooterAngle.setInverted(setInverted);
+    shooterAngle.set(power);
+  }  
+  public void BrakeShooter(){
+    shooterAngle.setNeutralMode(NeutralModeValue.Brake);
+  }
+
+
 
   @Override
   public void periodic() {
