@@ -11,6 +11,9 @@ public class ArmSubsystem extends SubsystemBase {
     public void changeVoltage(double newVoltage) {
         MikuBondage.setVoltage​(newVoltage);
     }
+    public void setSpeed(double newSpeed) {
+        MikuBondage.set(newSpeed)
+    }
     //Coasting -
     public void coast() {
         MikuBondage.setNeutralMode(NeutralModeValue.valueOf("Coast"));
@@ -18,5 +21,13 @@ public class ArmSubsystem extends SubsystemBase {
     //Braking
     public void brake() {
         MikuBondage.setNeutralMode(NeutralModeValue.valueOf("Brake"));
+    }
+
+    public double getPosition() {
+        return MikuBondage.getPosition().getValueAsDouble();
+    }
+
+    public double getVelocity() {
+        return MikuBondage.getVelocity().getValueAsDouble();
     }
 }
