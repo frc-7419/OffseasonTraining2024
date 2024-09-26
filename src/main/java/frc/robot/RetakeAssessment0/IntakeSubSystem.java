@@ -4,6 +4,8 @@
 
 package frc.robot.MakeUpAssessment0;
 
+import com.ctre.phoenix6.signals.NeutralModeValue;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class LoaderSubSystem extends SubsystemBase {
@@ -22,7 +24,9 @@ public class LoaderSubSystem extends SubsystemBase {
 
   }
   public void brake(){
+    Object intakeMotor1Motor1;
     intakeMotor1Motor1.setNeutralMode(NeutralModeValue.Brake)
+    Object intakeMotor2;
     intakeMotor2.setNeutralMode(NeutralModeValue.Brake)
     
 

@@ -8,25 +8,29 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ArmSubSystem extends SubsystemBase {
   /** Creates a new ArmSubSystem. */
-  private final TalonFX armMotor; // declares our motor
-  public armSubSystem() { //creates a new talonfx object called arm motor with device id 0
-    this.armMotor = new TalonFX(0);
+  private final TalonFx armMotor; // defines motor
+  public ArmSubSystem() {
+    this.armMotor = new TalonFx(deviceId:0); //creates a new object of type talonfx with deviceID 0
   }
-  public void runMotor(double power) {  //runes the motor and accepts parameter power
+  public void runMotor(double power){ //constructor for the runMotor() command that accepts parameter of power
     armMotor.set(power);
 
 
   }
-  public void coast() {  //sets the arms neutral mode to coast
+  @Override // lets us know that we intend to ovveride this code
+  public void periodic() { //dont know for thus one
+    // This method will be called once per scheduler run
+  }
+  public void coast() { //coast command method that sets neutral mode value to coast
     armMotor.setNeutralMode(NeutralModeValue.Coast);
 
   }
-  public void brake() { //brakes the arm
-    armMotor.setNeutralMode(NeutralModeValue.Brake);
+  public void brake() { //same as before but sets to brake
+    armMotor.setNeutralMode(NeutralModeValue.brake)
 
   }
   @Override
-  public void periodic() { //gives us the arms current voltage.
-    SmartDashboard.putNumber("Arm motor Voltage", armMotor.getMotorVoltage().getValue()); //bonus
+  public void periodic() { //dont know what this does but my best guess is that it displays voltage.
+    SmartDashboard.putNumber("Arm motor Voltage", armMotor.getMotorVoltage().getValue());
   }
 }
