@@ -26,9 +26,9 @@ public class Subsystem extends SubsystemBase {
     }
 
     public void brake() {
-    shooterAngleMotor.setNeutralMode(NeutralModeValue.Brake);
-    topFlywheelMotor.setNeutralMode(NeutralModeValue.Brake);
-    bottomFlywheelMotor.setNeutralMode(NeutralModeValue.Brake);
+        shooterAngleMotor.setNeutralMode(NeutralModeValue.Brake);
+        topFlywheelMotor.setNeutralMode(NeutralModeValue.Brake);
+        bottomFlywheelMotor.setNeutralMode(NeutralModeValue.Brake);
     }
 
     public void runMotor(double shooterAngleMotorSpeed, double topFlywheelMotorSpeed, double bottomFlywheelMotorSpeed) {
