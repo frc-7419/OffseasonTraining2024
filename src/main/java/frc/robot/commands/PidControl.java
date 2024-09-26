@@ -41,7 +41,7 @@ public class PidControl extends Command {
   @Override
   public void execute() {
     double position = shooterWrist.getPosition();
-    shooterWrist.setPower(feedforward.calculate(position, setpoint) + pidController.calculate(position));
+    shooterWrist.setPower(feedforward.calculate(position, 2) + pidController.calculate(position));
   }
 
   // Called once the command ends or is interrupted.
