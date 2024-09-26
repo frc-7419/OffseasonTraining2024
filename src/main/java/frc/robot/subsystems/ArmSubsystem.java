@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix6.StatusSignal;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
@@ -19,6 +20,10 @@ public class ArmSubsystem extends SubsystemBase {
 
   public void runMotor(double power) {
     armMotor.set(power);
+  }
+
+  public double getPosition() {
+    return armMotor.getPosition().getValueAsDouble();
   }
 
   public void coast() {
