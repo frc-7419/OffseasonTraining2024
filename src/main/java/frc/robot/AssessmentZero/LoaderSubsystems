@@ -1,0 +1,29 @@
+public class loaderSubsystem{
+    private final Falcon500CTRE.motor{
+        this.motor = new Falcon500CTRE()
+
+
+    }
+    set.motor.Falcon500CTRE(coast)
+    Falcon500CTRE.set.power
+    Falcon500CTRE.set(0.5)
+    joystick.leftButton().setAsBoolean
+    public class shooter{
+        }
+        intakeTop.isTrue
+    pubic class loader{
+
+
+
+    }
+    public void coast(){
+        Falcon500CTRE.setNeutralMode(NeutralModeValue.coast);
+    }
+    public void brake(){
+        Falcon500CTRE.setNeutralMode(NeutralModeValue.brake);
+    }
+    
+
+
+}
+
