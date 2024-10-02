@@ -15,6 +15,7 @@ public class AccelerometerSubsystem extends SubsystemBase {
 
   public AccelerometerSubsystem() {
     ahrs = new AHRS();
+    
   }
 
   // Getters for the AHRS object
