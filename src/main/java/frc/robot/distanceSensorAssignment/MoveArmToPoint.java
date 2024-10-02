@@ -24,6 +24,7 @@ public class MoveArmToPoint extends Command {
    this.setPoint = setPoint;
    this.armSubsystem = armSubsystem;
    this.distMXP = new Rev2mDistanceSensor(Port.kMXP);
+   addRequirements(armSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -39,7 +40,7 @@ public class MoveArmToPoint extends Command {
     double currentPos = armSubsystem.getPosition();
     double pid = pidController.calculate(currentPos);
     double ff = armFeedforward.calculate(currentPos,2);
-    if (distMXP.getRange()>=0.3) { //prevents arm from slamming into a wall or enemy
+    if (distMXP.getRange()>=0.3) { //prevents arm from slamming into a wall or other gameobject
       armSubsystem.runMotor(pid+ff);
     }
     
