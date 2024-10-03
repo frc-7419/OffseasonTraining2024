@@ -36,15 +36,24 @@ public class TankDriveSubsystem extends TimedRobot {
   @Override
   public void autonomousInit() {
     // Set setpoint to current heading at start of auto
-    heading = gyro.getAngle();
+    heading = gyro.getYaw();
     drive = new DifferentialDrive(left1::set, right1::set);
   }
 
   @Override
   public void autonomousPeriodic() {
-    double error = heading - gyro.getAngle();
+    double error = heading - gyro.getYaw();
     drive.tankDrive(.5 + kP * error, .5 - kP * error);
   }
+
+  public double getHeading() {
+    return gyro.getYaw();
+  }
+
+  public void tankDrive(double a, double b) {
+    drive.tankDrive(a, b);
+  }
+
 }
 
 /** EDITED CODE TO WORK WITH STABALIZEHEADINGCOMMAND */

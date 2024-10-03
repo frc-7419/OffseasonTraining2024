@@ -23,9 +23,9 @@ public class RunGyroWithXBoxController extends CommandBase {
 
   @Override
   public void execute() {
-    double yaw = gyroSubsystem.yaw();
-    double roll = gyroSubsystem.roll();
-    double pitch = gyroSubsystem.pitch();
+    double yaw = gyroSubsystem.yawAHRS();
+    double roll = gyroSubsystem.rollAHRS();
+    double pitch = gyroSubsystem.pitchAHRS();
 
     SmartDashboard.putNumber("Gyro Yaw", yaw);
     SmartDashboard.putNumber("Gyro Roll", roll);

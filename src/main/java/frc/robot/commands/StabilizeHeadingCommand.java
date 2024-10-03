@@ -14,7 +14,7 @@ public class StabilizeHeadingCommand extends Command {
     this.tankDriveSubsystem = tankDriveSubsystem;
     this.forwardSpeed = forwardSpeed;
     // Declare subsystem dependencies
-    addRequirements(tankDriveSubsystem);
+    addRequirements();
   }
 
   // Called when the command is initially scheduled
@@ -27,7 +27,7 @@ public class StabilizeHeadingCommand extends Command {
   // Called every time the scheduler runs while the command is scheduled
   @Override
   public void execute() {
-    double error = initialHeading - tankDriveSubsystem.getHeading();;
+    double error = initialHeading - tankDriveSubsystem.getHeading();
     double turnCorrection = kP * error;
     tankDriveSubsystem.tankDrive(forwardSpeed + turnCorrection, forwardSpeed - turnCorrection);
   }
