@@ -13,7 +13,6 @@ import frc.robot.subsystems.ArmSubsystem;
 
 public class RobotContainer {
   
-  private final CommandXboxController driveJoystick = new CommandXboxController(Constants.Operator.kdriveControllerPort);
   private final ArmSubsystem armSubsystem = new ArmSubsystem();
 
 
