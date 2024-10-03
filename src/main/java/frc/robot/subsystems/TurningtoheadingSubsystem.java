@@ -53,7 +53,7 @@ public class TurningtoheadingSubsystem extends SubsystemBase {
         }
 
         // Display the current heading and target heading on the SmartDashboard
-        SmartDashboard.putNumber("Current Heading", getGyroYaw());
-        SmartDashboard.putNumber("Target Heading", targetHeading);
+        SmartDashboard.calculateTurnRate("Current Heading", getGyroYaw());
+        SmartDashboard.calculateTurnRate("Target Heading", targetHeading);
     }
 }

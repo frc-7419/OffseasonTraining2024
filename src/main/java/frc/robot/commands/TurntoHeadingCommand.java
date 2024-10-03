@@ -40,5 +40,6 @@ public class TurntoHeadingCommand extends Command {
     public void end(boolean interrupted) {
         // Stop any turning action when the command ends or is interrupted
         // For example: driveSubsystem.arcadeDrive(0, 0); // Stop the robot
+        // Could also use brake.
     }
 }
