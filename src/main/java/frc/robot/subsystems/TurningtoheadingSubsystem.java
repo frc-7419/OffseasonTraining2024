@@ -6,14 +6,14 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.kauailabs.navx.frc.AHRS;
 
 // Define the TurningSubsystem that handles turning to a set heading
-public class TurningSubsystem extends SubsystemBase {
+public class TurningtoheadingSubsystem extends SubsystemBase {
     private final AHRS ahrs; // Instance of the AHRS class. Used for accessing gyro data
     private double targetHeading; // The desired heading to turn towards
     private final double tolerance = 1.0; // Tolerance in degrees for heading accuracy
     private final double kp = 0.03; // Proportional gain for turning
 
     // Constructor for the TurningSubsystem
-    public TurningSubsystem() {
+    public TurningtoheadingSubsystem() {
         this.ahrs = new AHRS(); // Initialize the AHRS object for gyro functionality
         this.targetHeading = 0; // Default target heading
     }
