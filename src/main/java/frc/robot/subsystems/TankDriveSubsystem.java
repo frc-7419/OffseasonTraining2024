@@ -4,12 +4,11 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix6.hardware.Pigeon2;
-
+import com.kauailabs.navx.frc.AHRS;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class TankDriveSubsystem extends TimedRobot {
   double kP = 1;
@@ -24,7 +23,8 @@ public class TankDriveSubsystem extends TimedRobot {
 
   DifferentialDrive drive;
 
-  private final Pigeon2 gyro = new Pigeon2(4);
+  private final AHRS gyro = new AHRS(SPI.Port.kMXP);
+
 
   @Override
   public void robotInit() {
@@ -46,3 +46,43 @@ public class TankDriveSubsystem extends TimedRobot {
     drive.tankDrive(.5 + kP * error, .5 - kP * error);
   }
 }
+
+/** EDITED CODE TO WORK WITH STABALIZEHEADINGCOMMAND */
+
+// package frc.robot.subsystems;
+
+// import com.kauailabs.navx.frc.AHRS;
+// import edu.wpi.first.wpilibj.SPI;
+// import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+// import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
+// import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
+// public class TankDriveSubsystem extends SubsystemBase {
+//   double kP = 1;
+//   double heading;
+
+//   PWMSparkMax left1 = new PWMSparkMax(0);
+//   PWMSparkMax left2 = new PWMSparkMax(1);
+//   PWMSparkMax right1 = new PWMSparkMax(2);
+//   PWMSparkMax right2 = new PWMSparkMax(3);
+//   public DifferentialDrive drive;
+
+//   // Gyro
+//   private final AHRS gyro = new AHRS(SPI.Port.kMXP);
+
+//   public TankDriveSubsystem() {
+//     left1.addFollower(left2);
+//     right1.addFollower(right2);
+//     right1.setInverted(true);
+    
+//     drive = new DifferentialDrive(left1, right1);
+//   }
+
+//   public void tankDrive(double leftSpeed, double rightSpeed) {
+//     drive.tankDrive(leftSpeed, rightSpeed);
+//   }
+
+//   public void getHeading() {
+//     heading = gyro.getAngle();  //current heading
+//   }
+// }
