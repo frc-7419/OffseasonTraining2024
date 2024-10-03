@@ -20,8 +20,8 @@ public class Sensor extends SubsystemBase {
   AnalogPotentiometer pot = new AnalogPotentiometer(0, 180, 30);
   /** Creates a new Sensor. */
   public Sensor(TalonFX moveMotorOne, TalonFX moveMotorTwo) {
-    this.moveMotorOne = moveMotorOne;
-    this.moveMotorTwo = moveMotorTwo;
+    this.moveMotorOne = new TalonFX(0);
+    this.moveMotorTwo = new TalonFX(1);
   }
 
 
