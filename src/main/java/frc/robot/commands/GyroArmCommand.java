@@ -4,11 +4,11 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.GyroSubsystem;
 
-public class GyroCommand extends Command {
+public class GyroArmCommand extends Command {
     private final ArmSubsystem arm;
     private final GyroSubsystem gyro;
 
-    public GyroCommand(ArmSubsystem arm, GyroSubsystem gyro) {
+    public GyroArmCommand(ArmSubsystem arm, GyroSubsystem gyro) {
         this.arm = arm;
         this.gyro = gyro;
         addRequirements(arm);
