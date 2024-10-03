@@ -7,9 +7,11 @@ package frc.robot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.robot.commands.RunArmBasedOnGyro;
 import frc.robot.commands.RunArmWithJoystick;
 import frc.robot.commands.StabilizeHeadingCommand;  
 import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.subsystems.GyroSubsystem;
 import frc.robot.subsystems.TankDriveSubsystem;
 
 public class RobotContainer {
@@ -18,6 +20,8 @@ public class RobotContainer {
   private final ArmSubsystem arm = new ArmSubsystem();
   private final TankDriveSubsystem tankDriveSubsystem = new TankDriveSubsystem(); 
   private final RunArmWithJoystick runArmWithJoystick = new RunArmWithJoystick(arm, driveJoystick);
+  private final GyroSubsystem gyroSubsystem = new GyroSubsystem();
+  private final Command runArmBasedOnGyro = new RunArmBasedOnGyro(gyroSubsystem, arm);
   //set at 50% speed
   private final Command stabilizeHeading = new StabilizeHeadingCommand(tankDriveSubsystem, 0.5);
 
@@ -27,7 +31,7 @@ public class RobotContainer {
   }
 
   private void configureBindings() {
-    driveJoystick.rightBumper().whileTrue(stabilizeHeading); 
+    driveJoystick.rightBumper().whileTrue(runArmBasedOnGyro); 
   }
 
   public Command getAutonomousCommand() {
