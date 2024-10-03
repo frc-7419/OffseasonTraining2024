@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Sensor extends SubsystemBase {
   private final TalonFX moveMotorOne;
   private final TalonFX moveMotorTwo;
+  
   AnalogPotentiometer pot = new AnalogPotentiometer(0, 180, 30);
   /** Creates a new Sensor. */
   public Sensor(TalonFX moveMotorOne, TalonFX moveMotorTwo) {
@@ -46,7 +47,7 @@ public class Sensor extends SubsystemBase {
   }
   @Override
   public void periodic() {
-    SmartDashboard.putNumber("Distance from Target", 0)
+    SmartDashboard.putNumber("Distance from Target", getSensorDistance());
     // This method will be called once per scheduler run
   }
 }
