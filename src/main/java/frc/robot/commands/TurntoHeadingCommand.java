@@ -5,12 +5,12 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.TurningSubsystem;
 
 // Define a command that turns the robot to a specified heading
-public class TurnToHeadingCommand extends Command {
+public class TurntoHeadingCommand extends Command {
     private final TurningSubsystem turningSubsystem; // The turning subsystem
     private final double targetHeading; // The desired heading to turn towards
 
     // Constructor for TurnToHeadingCommand, taking in the turning subsystem and target heading
-    public TurnToHeadingCommand(TurningSubsystem turningSubsystem, double targetHeading) {
+    public TurntoHeadingCommand(TurningSubsystem turningSubsystem, double targetHeading) {
         this.turningSubsystem = turningSubsystem; // Initialize the turning subsystem
         this.targetHeading = targetHeading; // Set the desired heading
 
