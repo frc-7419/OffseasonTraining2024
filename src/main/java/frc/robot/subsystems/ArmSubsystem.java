@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ArmSubsystem extends SubsystemBase {
-  
   private final TalonFX armMotor;
 
   public ArmSubsystem() {
@@ -28,6 +27,10 @@ public class ArmSubsystem extends SubsystemBase {
 
   public void brake() {
     armMotor.setNeutralMode(NeutralModeValue.Brake);
+  }
+
+  public double getPosition() {
+    return armMotor.getPosition();
   }
 
   @Override
