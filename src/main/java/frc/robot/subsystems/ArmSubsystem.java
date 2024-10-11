@@ -7,11 +7,13 @@ package frc.robot.subsystems;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
+import edu.wpi.first.wpilibj.DutyCycleEncoder;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ArmSubsystem extends SubsystemBase {
   private final TalonFX armMotor;
+  private final DutyCycleEncoder encoder = new DutyCycleEncoder(5);
 
   public ArmSubsystem() {
     this.armMotor = new TalonFX(0);
@@ -30,7 +32,7 @@ public class ArmSubsystem extends SubsystemBase {
   }
 
   public double getPosition() {
-    return armMotor.getPosition();
+    return encoder.getAbsolutePosition() - encoder.getPositionOffset();
   }
 
   @Override
