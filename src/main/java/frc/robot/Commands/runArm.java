@@ -8,10 +8,10 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Subsystems.ArmSubsystem;
 
+
 public class runArm extends Command {
   private final ArmSubsystem arm;
   private final CommandXboxController joystick;
-  private final 
 
   public runArm(ArmSubsystem arm, CommandXboxController joystick) {
     this.arm = arm;
