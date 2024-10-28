@@ -41,7 +41,7 @@ public class DriveBaseSubsystem extends SubsystemBase {
       rightBackMotor.setPower(rightPower);
       leftFrontMotor.setPower(leftPower);
       leftBackMotor.setPower(leftPower);
-      //this is a test
+
     }
             
   }
