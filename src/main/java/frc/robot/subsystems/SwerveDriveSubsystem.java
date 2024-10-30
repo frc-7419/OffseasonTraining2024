@@ -5,6 +5,7 @@ import com.ctre.phoenix6.hardware.TalonFX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class SwerveDriveSubsystem extends SubsystemBase {
+    private static final double DEAD_BAND = 0.05; // Define a deadband threshold
     // Create instances of SwerveModules
     private SwerveModule frontLeft = new SwerveModule(0, 4, 8, 9, 0.1, 0, 0);
     private SwerveModule frontRight = new SwerveModule(1, 5, 10, 11, 0.1, 0, 0);
@@ -16,6 +17,12 @@ public class SwerveDriveSubsystem extends SubsystemBase {
     }
 
     public void drive(double xSpeed, double ySpeed, double rotation) {
+
+        // Apply deadband using ternary operators
+        xSpeed = (Math.abs(xSpeed) < DEAD_BAND) ? 0 : xSpeed;
+        ySpeed = (Math.abs(ySpeed) < DEAD_BAND) ? 0 : ySpeed;
+        rotation = (Math.abs(rotation) < DEAD_BAND) ? 0 : rotation;
+
         // Calculate target angles and speeds
         double frontLeftSpeed = ySpeed + xSpeed + rotation;
         double frontRightSpeed = ySpeed - xSpeed - rotation;
