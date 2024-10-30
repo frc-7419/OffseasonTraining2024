@@ -3,16 +3,21 @@ package frc.robot;
 Imports necessary packages to run FRC commands
 */
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.RunArmWithJoystick;
+import frc.robot.commands.SwerveDriveCommand;
 import frc.robot.subsystems.ArmSubsystem;
 
 //Loader & Intake Subsystems
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LoaderSubsystem;
+import frc.robot.subsystems.SwerveDriveSubsystem;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -27,7 +32,6 @@ public class RobotContainer {
   private final ArmSubsystem arm = new ArmSubsystem();
   private final RunArmWithJoystick runArmWithJoystick = new RunArmWithJoystick(arm, driveJoystick);
   private final Command runArmJoystick = new RunCommand(()->arm.runMotor(driveJoystick.getLeftY()), arm);
-
   //Loader and Intake Subsystems
   private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
   private final LoaderSubsystem loaderSubsystem = new LoaderSubsystem();
@@ -36,9 +40,15 @@ public class RobotContainer {
   private final IntakeCommand intakeCommand = new IntakeCommand(intakeSubsystem, driveJoystick);
   private final LoaderCommand loaderCommand = new LoaderCommand(loaderSubsystem, driveJoystick);
 
+  private final SwerveDriveSubsystem swerveDriveSubsystem = new SwerveDriveSubsystem();
+  private final XboxController controller = new XboxController(0); // Controller ID
+  private final CommandBase swerveDriveCommand = new SwerveDriveCommand(swerveDriveSubsystem, controller);
+
 
 public RobotContainer() {
     configureBindings();
+    configureButtonBindings();
+    swerveDriveSubsystem.setDefaultCommand(swerveDriveCommand);
   }
 
 //I was not sure how to do this, so I just used online resources + WPILIB Docs
@@ -53,7 +63,9 @@ public RobotContainer() {
 
   
 
-  private void configureBindings() {}
+  public void initialize() {
+      CommandScheduler.getInstance().schedule(swerveDriveCommand);
+  }
   private void configureBindings() {
     driveJoystick.rightBumper().getAsBoolean();
   }
@@ -69,5 +81,8 @@ public RobotContainer() {
     //Alternative
     intake.setDefaultCommand(intakeCommand)
     loader.setDefaultCommand(loaderCommand)
+  }
+  public void robotPeriodic() {
+        CommandScheduler.getInstance().run();
   }
 }
