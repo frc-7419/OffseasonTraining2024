@@ -4,8 +4,10 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.ctre.phoenix6.signals.NeutralModeValue;
+import com.ctre.phoenix6.StatusSignal;
 import com.ctre.phoenix6.hardware.TalonFX;
 
 import frc.robot.Constants.ArmConstants;
@@ -20,16 +22,16 @@ public class ArmSubsystem extends SubsystemBase {
 
   // Sets the motor to "coast" mode, allowing it to move freely when no power is applied
   public void coast() {
-    armMotor.setNeutralMode(NeutralMode.coast);
+    armMotor.setNeutralMode(NeutralModeValue.Coast);
   }
 
-  public void getPosition() {
-    return armMotor.getPosition().getValueAsDouble();
+  public StatusSignal<Double> getPosition() {
+    return armMotor.getPosition();
   }
 
   // Sets the motor to "brake" mode, stopping the motor when no power is applied
   public void brake() {
-    armMotor.setNeutralMode(NeutralMode.brake);
+    armMotor.setNeutralMode(NeutralModeValue.Brake);
   } 
     
   public void runMotor(double power) {
