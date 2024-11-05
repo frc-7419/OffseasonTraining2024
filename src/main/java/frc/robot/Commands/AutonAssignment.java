@@ -10,13 +10,7 @@ import frc.robot.Subsystems.IntakeSubsystem;
 import frc.robot.Subsystems.ShooterSubsystem;
 
 public class AutonAssignment extends ParallelCommandGroup {
-    private final IntakeSubsystem intakeSubsystem;
-    private final ShooterSubsystem shooterSubsystem;
-    private final ArcadeDrive arcadeDrive;
     public AutonAssignment(IntakeSubsystem intakeSubsystem, ShooterSubsystem shooterSubsystem, ArcadeDrive arcadeDrive) {
-        this.intakeSubsystem = intakeSubsystem;
-        this.shooterSubsystem = shooterSubsystem;
-        this.arcadeDrive = arcadeDrive;
 
         Command runIntake = new RunCommand(() -> intakeSubsystem.runIntake(0.9), intakeSubsystem);
         Command runShooter = new RunCommand(() -> shooterSubsystem.runShooter(1.0), shooterSubsystem);

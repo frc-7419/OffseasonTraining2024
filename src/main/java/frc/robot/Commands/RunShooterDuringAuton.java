@@ -18,7 +18,7 @@ public class RunShooterDuringAuton extends SequentialCommandGroup {
   public RunShooterDuringAuton(ShooterSubsystem shooterSubsystem) {
     addCommands(
       new ParallelRaceGroup(
-        new WaitCommand(3),
+        new WaitCommand(2),
         new RunCommand(()->shooterSubsystem.runShooter(0.9), shooterSubsystem)
       )
     );
