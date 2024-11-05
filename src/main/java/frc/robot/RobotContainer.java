@@ -4,27 +4,44 @@
 
 package frc.robot;
 
+import com.fasterxml.jackson.core.sym.Name;
+import com.pathplanner.lib.auto.NamedCommands;
+import com.pathplanner.lib.commands.PathPlannerAuto;
+
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Commands.RunArmWithJoystick;
-import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.Commands.RunShooterDuringAuton;
+import frc.robot.Subsystems.ArcadeDrive;
+import frc.robot.Subsystems.IntakeSubsystem;
+import frc.robot.Subsystems.ShooterSubsystem;
+import frc.robot.Subsystems.ArmSubsystem;
 
 public class RobotContainer {
-  private final CommandXboxController joystick = new CommandXboxController(0);
-  private final ArmSubsystem armSubsystem = new ArmSubsystem();
-  private final RunArmWithJoystick runArmWithJoystick = new RunArmWithJoystick(armSubsystem, joystick);
+  private final ArcadeDrive arcadeDrive = new ArcadeDrive();
+  private final ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
+  private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
+  private final Command runIntake = new RunCommand(() -> intakeSubsystem.runIntake(0.9), intakeSubsystem);
+  private final RunShooterDuringAuton runShooterDuringAuton = new RunShooterDuringAuton(shooterSubsystem);
+
+  private final PathPlannerAuto twoNoteAuton = new PathPlannerAuto("TwoNoteAuton");
+
   public RobotContainer() {
-    armSubsystem.setDefaultCommand(runArmWithJoystick);
     configureBindings();
+    configureNamedCommandsPathPlanner();
   }
 
   private void configureBindings() {
 
   }
-
+  private void configureNamedCommandsPathPlanner(){
+    NamedCommands.registerCommand("Shoot", runShooterDuringAuton);
+    NamedCommands.registerCommand("Intake", runIntake);
+  }
   public Command getAutonomousCommand() {
-    return Commands.print("No autonomous command configured");
+    return twoNoteAuton;
   }
   
 }

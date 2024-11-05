@@ -5,7 +5,9 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
+import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.Subsystems.ArcadeDrive;
 import frc.robot.Subsystems.ArmSubsystem;
 
@@ -18,10 +20,11 @@ public class Jawntonomous extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new ParallelCommandGroup(
+      new ParallelDeadlineGroup(
+        new WaitCommand(5),
         new SetArmToPoint(armSubsystem, 100),
         new TranslateDistance(arcadeDrive,10)
-      ).withTimeout(5)
+      )
     );
   }
 }
