@@ -20,7 +20,7 @@ public class ArmSubsystem extends SubsystemBase {
   public void brake(){
     armMotor.setNeutralMode(NeutralModeValue.Brake);
   }
-  public setPower(double power){
+  public void setPower(double power){
     armMotor.set(power);
   }
 
