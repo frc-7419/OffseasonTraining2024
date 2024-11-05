@@ -37,6 +37,13 @@ public class arcadeDriveSubsystem extends SubsystemBase {
     motorLB.setNeutralMode(NeutralModeValue.Brake);
   }
 
+  public void setPower(double leftPower, double rightPower){
+    motorRF.set(rightPower);
+    motorRB.set(rightPower);
+    motorLF.set(leftPower);
+    motorLB.set(leftPower);
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
