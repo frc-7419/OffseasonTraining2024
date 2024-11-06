@@ -25,7 +25,7 @@ public class RunIntakeWithJoystick extends Command {
   @Override
   public void initialize() {
     intakeSubsystem.coast();
-  
+    intakeSubsystem.set(0);  
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -34,6 +34,10 @@ public class RunIntakeWithJoystick extends Command {
     if (joystick.getRightTriggerAxis() > 0.05) {
       intakeSubsystem.set(0.5);
 
+    }
+    else if(joystick.getLeftTriggerAxis() > 0.05){
+      intakeSubsystem.set(-0.5);
+      
     }
     else{
       intakeSubsystem.set(0);
