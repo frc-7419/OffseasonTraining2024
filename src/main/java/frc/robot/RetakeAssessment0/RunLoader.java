@@ -2,52 +2,44 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.subsystems;
+package frc.robot.MakeUpAssessment0;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
-public class RunIntakeWithJoystick extends Command {
-  /** Creates a new RunIntakeWithJoystick. */
-  private final IntakeSubsystem intakeSubsystem;
+public class RunLoader extends Command {
+  /** Creates a new RunLoader. */
+  private final LoaderSubSystem loaderMotor1;
+  private final LoaderSubSystem loaderMotor2;
   private final CommandXboxController joystick;
-
-  public RunIntakeWithJoystick(IntakeSubsystem intakeSubsystem, CommandXboxController joystick) {
+  public RunLoader() {
     // Use addRequirements() here to declare subsystem dependencies.
-    this.intakeSubsystem = intakeSubsystem;
-    this.joystick = joystick;
-    addRequirements(intakeSubsystem);
-
-    
+    this.CommandXboxController.joystick = joystick;
+    this.loaderMotor1 = loaderMotor1;
+    this.loaderMotor2 = loaderMotor2
+    addRequirements(LoaderSubSystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    intakeSubsystem.coast();
-  
+    loaderMotor1.coast()
+    loaderMotor2.coast()
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (joystick.getRightTriggerAxis() > 0.05) {
-      intakeSubsystem.set(0.5);
-
-    }
-    else{
-      intakeSubsystem.set(0);
-      intakeSubsystem.brake();
-    }
-    
-
+    loaderMotor1.runMotor(joystick.getRightY())
+    loaderMotor2.runMotor(joystick.getRightY()
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    intakeSubsystem.set(0);
-    intakeSubsystem.brake();
+    if joystick.getLeftBumper().getAsBoolean()
+    loaderMotor1.brake()
+    loaderMotor2.brake()
+
   }
 
   // Returns true when the command should end.
