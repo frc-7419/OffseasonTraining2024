@@ -36,7 +36,7 @@ public class ArmSubsystem extends SubsystemBase {
   }
   @Override
   public void periodic() {
-    smartDashboard.putNumber("Arm motor",armMotor.getMotorVoltage().getValue());
+    SmartDashboard.putNumber("Arm motor",armMotor.getMotorVoltage().getValue());
     //SmartDashboard
     // This method will be called once per scheduler run
   }
