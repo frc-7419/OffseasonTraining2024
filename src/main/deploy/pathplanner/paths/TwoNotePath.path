@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.2774219692183837,
-        "y": 6.861718923082922
+        "x": 1.1900115370772,
+        "y": 7.00011877397313
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.2774219692183824,
-        "y": 6.861718923082922
+        "x": 2.190011537077198,
+        "y": 7.00011877397313
       },
       "isLocked": false,
       "linkedName": "ShootLeftWaypoint"
     },
     {
       "anchor": {
-        "x": 2.9163675718655786,
-        "y": 6.978266165937833
+        "x": 2.9090833691871465,
+        "y": 7.00011877397313
       },
       "prevControl": {
-        "x": 1.9163675718655786,
-        "y": 6.978266165937833
+        "x": 2.9746411932930346,
+        "y": 7.007402976651561
       },
       "nextControl": null,
       "isLocked": false,
@@ -32,10 +32,10 @@
   "constraintZones": [],
   "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 3.0,
-    "maxAcceleration": 3.0,
-    "maxAngularVelocity": 540.0,
-    "maxAngularAcceleration": 720.0
+    "maxVelocity": 4.0,
+    "maxAcceleration": 4.0,
+    "maxAngularVelocity": 640.0,
+    "maxAngularAcceleration": 840.0
   },
   "goalEndState": {
     "velocity": 0,

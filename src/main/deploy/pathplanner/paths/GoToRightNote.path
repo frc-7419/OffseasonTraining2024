@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.9090833691871465,
-        "y": 7.00011877397313
+        "x": 1.7290425352811662,
+        "y": 5.535994035608302
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.185883070967562,
-        "y": 7.00011877397313
+        "x": 2.7290425352811662,
+        "y": 5.535994035608302
       },
       "isLocked": false,
-      "linkedName": "GetNoteLeftWaypoint"
+      "linkedName": "CenterShoot"
     },
     {
       "anchor": {
-        "x": 1.1900115370772,
-        "y": 7.00011877397313
+        "x": 2.646852072763595,
+        "y": 4.115574513314067
       },
       "prevControl": {
-        "x": 0.9527590749136483,
-        "y": 6.992828608413447
+        "x": 1.6468520727635951,
+        "y": 4.115574513314067
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "ShootLeftWaypoint"
+      "linkedName": "RightNote"
     }
   ],
   "rotationTargets": [],
@@ -39,7 +39,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 55.84030545433061,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,
