@@ -15,7 +15,7 @@ public class IntakeSubsystem extends SubsystemBase {
   private final TalonFX intakeMotorTwo;
   /** Creates a new intakeSubsystem. */
   public IntakeSubsystem() {
-    this.intakeMotorOne = new TalosnFX(0);
+    this.intakeMotorOne = new TalonFX(0);
     this.intakeMotorTwo = new TalonFX(1);
   }
   public void coast(){
