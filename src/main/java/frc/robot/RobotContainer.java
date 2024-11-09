@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.commands.RunArmWithJoystick;
 import frc.robot.commands.SwerveDriveCommand;
+import frc.robot.commands.TwoNoteAuton;
 import frc.robot.subsystems.ArmSubsystem;
 
 //Loader & Intake Subsystems
@@ -82,6 +83,10 @@ public RobotContainer() {
     intake.setDefaultCommand(intakeCommand)
     loader.setDefaultCommand(loaderCommand)
   }
+  public Command getAutonomousCommand() {
+        // Return the two-note autonomous command
+        return new TwoNoteAuton(swerveDriveSubsystem);
+    }
   public void robotPeriodic() {
         CommandScheduler.getInstance().run();
   }

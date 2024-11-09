@@ -7,10 +7,17 @@ import edu.wpi.first.wpilibj.XboxController;
 public class SwerveDriveCommand extends Command {
     private final XboxController controller;
     private final SwerveDriveSubsystem swerveDriveSubsystem;
+    private final double xSpeed;  // Forward/Backward Speed
+    private final double ySpeed;  // Strafe Speed
+    private final double rotation; // Rotation Speed (turning)
 
-    public SwerveDriveCommand(SwerveDriveSubsystem swerveDriveSubsystem, XboxController controller) {
+
+    public SwerveDriveCommand(SwerveDriveSubsystem swerveDriveSubsystem, XboxController controller, double xSpeed, double ySpeed, double rotation) {
         this.swerveDriveSubsystem = swerveDriveSubsystem; // Initialize from parameter
         this.controller = controller;
+        this.xSpeed = xSpeed;
+        this.ySpeed = ySpeed;
+        this.rotation = rotation;
         addRequirements(swerveDriveSubsystem);
     }
 
