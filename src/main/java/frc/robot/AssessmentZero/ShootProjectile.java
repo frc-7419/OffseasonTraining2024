@@ -1,50 +1,39 @@
-package frc.robot.commands;
-import edu.wpi.first.wpilibj2.button.CommandXboxController.xboxcontroller;
-import frc.robot.subsystems.ExampleSubsystem;
-import edu.wpi.first.wpilibj2.command.CommandBase;
+package frc.robot.AssessmentZero;
+import frc.robot.AssessmentZero.ShooterMotorSubsystem;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj2.command.Command;
 
-public class ShootProjectile extends CommandBase {
-    private final TopShooterSubsystem topShooterMotor;
-    private final BottomShooterSubsystem bottomShooterMotor;
+public class ShootProjectile extends Command {
+    private final XboxController xboxController;
+    private final ShooterMotorSubsystem shooterMotorSubsystem;
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public ShootProjectile(TopShooterSubsystem topShooterMotor,BottomShooterSubsystem bottomShooterMotor) {
-    this.ShooterAngleSubsystem = shooterAngleMotor;
-    this.joystick = joystick;
-    addRequirements(shooterAngleMotor);
+  public ShootProjectile(ShooterMotorSubsystem shooterMotorSubsystem) {
+    this.shooterMotorSubsystem = shooterMotorSubsystem;
+    this.xboxController = xboxController;
   }
 
-  // Called when the command is initially scheduled.
-  @Override
+
   public void initialize() {
-    topShooterMotor.coast();
-    bottomShooterMotor.coast();
+    shooterMotorSubsystem.coast();
 
   }
   // Called every time the scheduler runs while the command is scheduled.
-  @Override
   public void execute() {
-    shooterAngleMotor.runShooterMotor(joystick.getLeftY());
-
-    joystick.leftBumper().getAsBooleanValue();
-    topShooterMotor.runShooterMotor(rawButtomPressed());
-    bottomShooterMotor.runShooterMotor(rawButtomPressed());
+    shooterMotorSubsystem.runShooterMotor(xboxController.getLeftY());
+    shooterMotorSubsystem.runArmMotor(xboxController.getLeftX());
   }
   // Called once the command ends or is interrupted.
-  @Override
   public void end(boolean interrupted) {
-    topShooterMotor.brake();
-    bottomShooterMotor.brake();
-    
+    shooterMotorSubsystem.brake();
   }
 
   // Returns true when the command should end.
-  @Override
   public boolean isFinished() {
     return false;
   }
-    }
-
+}
