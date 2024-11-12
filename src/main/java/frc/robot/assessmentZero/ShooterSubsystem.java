@@ -6,17 +6,17 @@ import com.ctre.phoenix6.signals.NeutralModeValue;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class Subsystem extends SubsystemBase {
+public class ShooterSubsystem extends SubsystemBase {
 
     private final TalonFX shooterAngleMotor;
     private final TalonFX topFlywheelMotor;
     private final TalonFX bottomFlywheelMotor;
     private final double power;
 
-    public shooterSubsystem() {
+    public ShooterSubsystem() {
         this.shooterAngleMotor = new TalonFX(ShooterConstant.shooterCANID);
         this.topFlywheelMotor = new TalonFX(topFlywheelMotor.topFlywheelMotorCANID);
-        this.bottomFlywheelMotor = new TalonFX(bottomFlywheelMotor.bottomFlywheelMotorCANID));
+        this.bottomFlywheelMotor = new TalonFX(bottomFlywheelMotor.bottomFlywheelMotorCANID);
     }
 
     public void coast() {

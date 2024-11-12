@@ -2,39 +2,38 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.assessmentZero;
+package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.robot.Subsystems.ExampleSubsystem;
 
-public class Command extends Command {
-  /** Creates a new Command. */
+public class ExampleCommand extends Command {
 
-  private final ShooterSubsystem shooterSubsystem;
+  private final ExampleSubsystem exampleSubsystem;
   private final CommandXboxController joystick;
 
-  public Command(ShooterSubsystem shooterSubsystem, CommandXboxController joystick) {
-    this.shooterSubsystem = shooterSubsystem;
+  public ExampleCommand (ExampleSubsystem exampleSubsystem, CommandXboxController joystick) {
+    this.exampleSubsystem = exampleSubsystem;
     this.joystick = joystick;
-    addRequirements(shooterSubsystem);
+    addRequirements(exampleSubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    shooterSubsystem.coast();
+    exampleSubsystem.coast();
   }
 
-  // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    shooterSubsystem.setPower();
+    exampleSubsystem.runMotor(joystick.getLeftY(), joystick.getRightY());
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-
+    exampleSubsystem.brake();
   }
 
   // Returns true when the command should end.
@@ -42,4 +41,5 @@ public class Command extends Command {
   public boolean isFinished() {
     return false;
   }
+
 }

@@ -8,17 +8,18 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Subsystems.DriveBaseSubsystem;
+import frc.robot.Subsystems.drive.ArcadeDriveBaseSubsystem;
 import frc.robot.subsystems.DriveBaseSubsystem;
 
 public class ArcadeDrive extends Command {
 
-  private final DriveBaseSubsystem driveBaseSubsystem;
+  private final ArcadeDriveBaseSubsystem arcadeDriveBaseSubsystem;
   private final XboxController xboxController;
 
-  public ArcadeDrive(DriveBaseSubsystem driveBaseSubsystem) {
-    this.driveBaseSubsystem = driveBaseSubsystem;
+  public ArcadeDrive(ArcadeDriveBaseSubsystem arcadeDriveBaseSubsystem) {
+    this.arcadeDriveBaseSubsystem = arcadeDriveBaseSubsystem;
     this.xboxController = xboxController;
-    addRequirements(driveBaseSubsystem);
+    addRequirements(arcadeDriveBaseSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -32,13 +33,13 @@ public class ArcadeDrive extends Command {
     forward *= 0.5;
     rotation *= 0.5;
 
-    driveBaseSubsystem.setPower(forward + rotation, forward - rotation);
+    arcadeDriveBaseSubsystem.setPower(forward + rotation, forward - rotation);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    driveBaseSubsystem.setPower(0,0);
+    arcadeDriveBaseSubsystem.setPower(0,0);
   }
 
   // Returns true when the command should end.
