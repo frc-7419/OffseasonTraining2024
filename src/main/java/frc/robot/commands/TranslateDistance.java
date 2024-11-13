@@ -5,11 +5,11 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.arcadeDriveSubsystem;
+import frc.robot.subsystems.DriveBaseSubsystem;
 
 public class TranslateDistance extends Command {
   /** Creates a new TranslateDistance. */
-  public TranslateDistance(arcadeDriveSubsystem drive, double distance) {
+  public TranslateDistance(DriveBaseSubsystem drive, double distance) {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 

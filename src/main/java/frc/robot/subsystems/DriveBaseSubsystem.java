@@ -9,13 +9,13 @@ import com.ctre.phoenix6.signals.NeutralModeValue;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class arcadeDriveSubsystem extends SubsystemBase {
+public class DriveBaseSubsystem extends SubsystemBase {
   private final TalonFX motorRF;
   private final TalonFX motorRB;
   private final TalonFX motorLF;
   private final TalonFX motorLB;
   
-  public arcadeDriveSubsystem() {
+  public DriveBaseSubsystem() {
     this.motorRF = new TalonFX(0);
     this.motorRB = new TalonFX(1);
     this.motorLF = new TalonFX(2);
