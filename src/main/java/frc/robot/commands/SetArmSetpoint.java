@@ -17,7 +17,7 @@ public class SetArmSetpoint extends Command {
 
 
 
-public void SetArmSetpoint(ArmSubSystem arm, double setpoint) { //dude i set it to void why is it not working 
+public SetArmSetpoint(ArmSubSystem arm, double setpoint) { //dude i set it to void why is it not working 
     // Use addRequirements() here to declare subsystem dependencies.
     this.armSubSystem = arm; //the joystick for this class = the joystick in commandxbox controller
     this.setpoint = setpoint;
