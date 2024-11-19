@@ -19,6 +19,7 @@ public class RunArmToDashboardTarget extends Command {
   public RunArmToDashboardTarget(ArmSubsystem myArm) {
     // Use addRequirements() here to declare subsystem d
     arm = myArm;
+    //Gets the value from the smart dashboard
     this.goal = SmartDashboard.getNumber("TargetPosition", 0);
     addRequirements(arm);
     
@@ -38,10 +39,11 @@ public class RunArmToDashboardTarget extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    //Sets the setpoint to a value obtained from the
+    //Sets the setpoint to a value obtained from the dashboard
     goal = SmartDashboard.getNumber("TargetPosition", 0);
     pid.setSetpoint(goal);
     double position = arm.getPosition();
+    //Sends the current position to the dashboard
     SmartDashboard.putNumber("CurrentPosition", position);
     arm.setSpeed(pid.calculate(position) + ff.calculate(position, arm.getVelocity()));
   }

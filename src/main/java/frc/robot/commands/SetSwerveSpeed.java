@@ -5,40 +5,37 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.subsystems.DrivebaseSubsystem;
 
-public class RunArmSubsystem extends Command {
-  /** Creates a new RunArmSubsystem. */
-  private ArmSubsystem arm;
-  private double power;
-  public RunArmSubsystem(ArmSubsystem myArm, double myPower) {
-    // Use addRequirements() here to declare subsystem d
-    arm = myArm;
-    power = myPower;
-    addRequirements(arm);
+public class SetSwerveSpeed extends Command {
+  Boolean done = false;
+  double s, r
+  DrivebaseSubsystem d;
+  /** Creates a new SetSwerveSpeed. */
+  public SetSwerveSpeed(DrivebaseSubsystem drivebase, double speed, double rotation) {
+    s = speed;
+    r = rotation;
+    d = drivebase;
+    addRequirements(drivebase);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    arm.coast();
+    d.setPower(s+r, s-r);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-    // arm.coast();
-  }
+  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-    arm.brake();
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return done;
   }
 }

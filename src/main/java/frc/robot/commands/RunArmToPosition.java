@@ -37,6 +37,8 @@ public class RunArmToPosition extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    //Sets the setpoint to a value obtained from the
+    // pid.setSetpoint
     double position = arm.getPosition();
     arm.setSpeed(pid.calculate(position) + ff.calculate(position, arm.getVelocity()));
   }

@@ -11,6 +11,7 @@ public class ArmSubsystem extends SubsystemBase {
     public void changeVoltage(double newVoltage) {
         MikuBondage.setVoltage​(newVoltage);
     }
+    
     public void setSpeed(double newSpeed) {
         MikuBondage.set(newSpeed)
     }

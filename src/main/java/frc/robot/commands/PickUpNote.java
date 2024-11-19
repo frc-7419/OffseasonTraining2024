@@ -2,18 +2,19 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.makeUpAssessmentZero;
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.LoaderSubsystem;
 
 public class PickUpNote extends Command {
   /** Creates a new IntakeSubsystem. */
   private IntakeSubsystem intake;
   private LoaderSubsystem loader;
-  public PickUpNote() {
-    intake = new IntakeSubsystem();
-    loader = new LoaderSubsystem();
+  public PickUpNote(IntakeSubsystem intake) {
+    this.intake = intake;
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
