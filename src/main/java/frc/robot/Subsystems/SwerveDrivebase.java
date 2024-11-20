@@ -33,8 +33,8 @@ public class SwerveDrivebase extends SubsystemBase {
   public void setSwerveModuleStateWithChassisSpeeds(ChassisSpeeds chassisSpeeds) {
     setSwerveModuleState(new SwerveDriveKinematics().toSwerveModuleStates(chassisSpeeds));
   }
-  public ChassisSpeeds getChassisSpeedsFromControllerInput(double leftStickX, double leftStickY, double rightStickX) {
-    return ChassisSpeeds.fromFieldRelativeSpeeds(leftStickX,leftStickY,rightStickX, gyro.getRotation2d());
+  public ChassisSpeeds getChassisSpeedsFromControllerInput(double leftStickY, double leftStickX, double rightStickX) {
+    return ChassisSpeeds.fromFieldRelativeSpeeds(leftStickY,leftStickX,rightStickX, gyro.getRotation2d());
   }
   public void brake(){
     leftBackModule.brake();
