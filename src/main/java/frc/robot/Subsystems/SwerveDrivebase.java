@@ -43,10 +43,10 @@ public class SwerveDrivebase extends SubsystemBase {
     rightFrontModule.brake(); 
   }
   public void coast(){
-    leftBackModule.Coast();
-    rightBackModule.Coast();
-    leftFrontModule.Coast();
-    rightFrontModule.Coast();
+    leftBackModule.coast();
+    rightBackModule.coast();
+    leftFrontModule.coast();
+    rightFrontModule.coast();
   }
   @Override
   public void periodic() {

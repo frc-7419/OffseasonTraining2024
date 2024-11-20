@@ -31,7 +31,7 @@ public class SwerveModule extends SubsystemBase {
     moveMotor.setNeutralMode(NeutralModeValue.Brake);
     turnMotor.setNeutralMode(NeutralModeValue.Brake);
   }
-  public void Coast(){
+  public void coast(){
     moveMotor.setNeutralMode(NeutralModeValue.Coast);
     turnMotor.setNeutralMode(NeutralModeValue.Coast);
   }
