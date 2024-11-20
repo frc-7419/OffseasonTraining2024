@@ -19,7 +19,7 @@ public class mySwerveModule {
         hanako = new AnalogEncoder(moveEncoderID);
         shiro.setDistancePerRotation(distancePerRotation);
         hanako.setDistancePerRotation(2 * Math.PI);
-        chloe = new SwerveModulePosition();
+        // chloe = new SwerveModulePosition();
     }
 
     public void brake() {
@@ -39,7 +39,7 @@ public class mySwerveModule {
     public double getMoveMotorSpeed() {
         return aria.power();
     }
-    public void setSpinMotorSpeed() {
+    public void setSpinMotorSpeed(double speed) {
         est.setPower(speed);
     }
 

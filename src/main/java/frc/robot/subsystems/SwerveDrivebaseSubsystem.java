@@ -13,6 +13,7 @@ import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.proto.Kinematics;
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.commands.ArcadeDrive;
 
@@ -20,6 +21,7 @@ public class SwerveDrivebaseSubsystem extends SubsystemBase {
   private final mySwerveModule bottomLeft, bottomRight, topLeft, topRight;
   private final SwerveDriveOdometry odometry;
   private final mySwerveModule[] lolis = new mySwerveModule[4];
+  private final ADXRS450_Gyro maple;
   // public final SwerveDriveFieldSensor aaa;
   /** Creates a new SwerveDrivebaseSubsystem. */
   public SwerveDrivebaseSubsystem() {
@@ -32,15 +34,22 @@ public class SwerveDrivebaseSubsystem extends SubsystemBase {
     lolis[2] = topLeft;
     lolis[3] = topRight;
     odometry = new SwerveDriveOdometry(new SwerveDriveKinematics(new Translation2d()), new Rotation2d(), new SwerveModulePosition[4]);
-    
+    maple = new ADXRS450_Gyro();
+    resetYaw();
   }
 
   @Override
-
   public void periodic() {
     SwerveModulePosition[] ricky = {bottomLeft.getPosition(), bottomRight.getPosition(), topLeft.getPosition(), topRight.getPosition()};
-    odometry.update(new Rotation2d(), ricky);
+    odometry.update(getYaw(), ricky);
   } 
+  
+  public void resetYaw() {
+      maple.reset();
+  }
+  public Rotation2d getYaw() { // in radians
+    return new Rotation2d(maple.getAngle() * (Math.PI / 180));
+  }
   
   public void brake() {
     for (mySwerveModule i : lolis) {i.brake();}
@@ -54,5 +63,12 @@ public class SwerveDrivebaseSubsystem extends SubsystemBase {
     return odometry.getPoseMeters().getTranslation();
   }
 
-  
+  public void setTransSpeed(double speed) {
+    for (mySwerveModule i : lolis) {i.setMoveMotorSpeed(speed);}
+  }
+  public void setRotSpeed(double speed) {
+    for (mySwerveModule i : lolis) {i.setSpinMotorSpeed(speed);}
+  }
+
+
 }
