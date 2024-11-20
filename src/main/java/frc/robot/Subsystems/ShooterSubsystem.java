@@ -17,15 +17,18 @@ public class ShooterSubsystem extends SubsystemBase {
     this.shooterMotorLeft = new TalonFX(0);
     this.shooterMotorRight = new TalonFX(1);
   }
+
   public void runShooter(double speed) {
     shooterMotorLeft.set(speed);
     shooterMotorRight.set(speed);
   }
-  public void brake(){
+
+  public void brakeShooter() {
     shooterMotorLeft.setNeutralMode(NeutralModeValue.Brake);
     shooterMotorRight.setNeutralMode(NeutralModeValue.Brake);
   }
-  public void coast(){
+
+  public void coastShooter() {
     shooterMotorLeft.setNeutralMode(NeutralModeValue.Coast);
     shooterMotorRight.setNeutralMode(NeutralModeValue.Coast);
   }

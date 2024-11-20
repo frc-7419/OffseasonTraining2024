@@ -14,13 +14,13 @@ private final TalonFX armMotor;
     }
 
     public void coast(){
-        armMotor.setNeutralMode(NeutralModeValue.Coast);
+      armMotor.setNeutralMode(NeutralModeValue.Coast);
     }
     public void brake(){
-        armMotor.setNeutralMode(NeutralModeValue.Brake);
-      }
-    public void setPower(double power){
-        armMotor.set(power);
+      armMotor.setNeutralMode(NeutralModeValue.Brake);
+    }
+    public void runArm(double speed){
+      armMotor.set(speed);
     }
     /*public float lerp(float a, float b, float f) 
   {
