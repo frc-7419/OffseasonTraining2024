@@ -7,10 +7,15 @@ package frc.robot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.robot.commands.RunArmWithJoystick;
+import frc.robot.subsystems.ArmSubsystem;
 
 public class RobotContainer {
   
   private final CommandXboxController driveJoystick = new CommandXboxController(Constants.Operator.kdriveControllerPort);
+  private final CommandXboxController operatorJoystick = new CommandXboxController(1);
+  private final ArmSubsystem armSubsystem = new ArmSubsystem();
+  private final RunArmWithJoystick runArmWithJoystick = new RunArmWithJoystick(armSubsystem, operatorJoystick);
 
   public RobotContainer() {
     configureBindings();
@@ -20,5 +25,9 @@ public class RobotContainer {
 
   public Command getAutonomousCommand() {
     return Commands.print("No autonomous command configured");
+  }
+
+  private void setDefaultCommands() {
+    armSubsystem.setDefaultCommand(runArmWithJoystick);
   }
 }

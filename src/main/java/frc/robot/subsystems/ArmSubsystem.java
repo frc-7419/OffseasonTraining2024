@@ -6,18 +6,22 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.NeutralModeValue;
+
+import edu.wpi.first.wpilibj.DutyCycleEncoder;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ArmSubsystem extends SubsystemBase {
   private final TalonFX armMotor;
+  private final DutyCycleEncoder armEncoder;
 
   /** Creates a new ArmSubsystem. */
   public ArmSubsystem() {
     this.armMotor = new TalonFX(0);
+    this.armEncoder = new DutyCycleEncoder(5); 
   }
 
-  public void runmotor(double power) {
+  public void setVoltage(double power) {
     armMotor.set(power);
   }
 
@@ -29,9 +33,14 @@ public class ArmSubsystem extends SubsystemBase {
     armMotor.setNeutralMode(NeutralModeValue.Brake);
   }
 
+  public double getPosition() {
+    return armEncoder.getAbsolutePosition();
+  }
+
   @Override
   public void periodic() {
     SmartDashboard.putNumber("Arm motor voltage", armMotor.getMotorVoltage().getValue());
     // This method will be called once per scheduler run
   }
 }
+
