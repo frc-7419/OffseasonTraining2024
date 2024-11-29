@@ -1,7 +1,11 @@
 package frc.robot.commands;
+<<<<<<< HEAD
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+=======
+>>>>>>> f2892633df0c93eea5dcb74e75bf42f875bb9d42
 import frc.robot.subsystems.ArmSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+
 
 
 public class SetArmToPoint extends CommandBase {
