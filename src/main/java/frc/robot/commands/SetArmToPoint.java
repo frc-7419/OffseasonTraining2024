@@ -1,8 +1,8 @@
 package frc.robot.commands;
-<<<<<<< HEAD
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-=======
->>>>>>> f2892633df0c93eea5dcb74e75bf42f875bb9d42
+import edu.wpi.first.wpilibj2.command.PIDCommand;
+import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.controller.ArmFeedforward;
 import frc.robot.subsystems.ArmSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
@@ -11,8 +11,9 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 public class SetArmToPoint extends CommandBase {
    private final ArmSubsystem armSubsystem;
    private double setpoint;
-   private final PIDController pidController = new PidController(1.0,0.0,0.1);
+   private final PIDController pidController = new PIDController(1.0,0.0,0.1);
    private final ArmFeedforward feedforward = new ArmFeedforward(0.0,1.0,0.5,0.1);
+   private final 
 
 
 
@@ -20,7 +21,6 @@ public class SetArmToPoint extends CommandBase {
  public SetArmToPoint (ArmSubsystem armSubsystem, double setpoint) {
    this.armSubsystem = armSubsystem;
    this.setPoint = setPoint;   
-   addRequirements(subsystem);
  }
 
 

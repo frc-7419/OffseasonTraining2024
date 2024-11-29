@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
-import com.ctre.hardware.phoenix6.TalonFX;
-import com.ctre.signals.phoenix6.TalonFX;
+import com.ctre.phoenix6.hardware.TalonFX;
+import edu.wpi.first.wpilibj.Joystick;
+import com.ctre.phoenix6.signals.NeutralModeValue;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class DriveBaseSubsystem extends SubsystemBase {
@@ -10,7 +11,7 @@ public class DriveBaseSubsystem extends SubsystemBase {
     private final TalonFX rightBackMotor;
     private final TalonFX leftFrontMotor;
     private final TalonFX leftBackMotor;
-    private final Joystick joystick = new Joystick(0);
+    private final Joystick joystick;
     
 
     public DriveBaseSubsystem(){
@@ -18,8 +19,9 @@ public class DriveBaseSubsystem extends SubsystemBase {
         this.rightBackMotor = new TalonFX(1);
         this.leftFrontMotor = new TalonFX(2);
         this.leftBackMotor = new TalonFX(3);
+        this.joystick = new Joystick(0);
         //combines front and back motors 
-        this.joystick = joystick;
+        // this.joystick = joystick;
     }
         public void coast(){
         rightFrontMotor.setNeutralMode(NeutralModeValue.Coast);
@@ -37,19 +39,19 @@ public class DriveBaseSubsystem extends SubsystemBase {
     }
     
     public void runMotor(double leftPower, double rightPower){
-      rightFrontMotor.setPower(rightPower);
-      rightBackMotor.setPower(rightPower);
-      leftFrontMotor.setPower(leftPower);
-      leftBackMotor.setPower(leftPower);
+      rightFrontMotor.set(rightPower);
+      rightBackMotor.set(rightPower);
+      leftFrontMotor.set(leftPower);
+      leftBackMotor.set(leftPower);
 
     }
             
   @Override
   public void periodic() {
-    rightFrontMotor.set("Front right motor",rightFrontMotor.getMotorVoltage().getValue());
-    rightBackMotor.set("Back right motor",rightBackMotor.getMotorVoltage().getValue());
-    leftFrontMotor.set("Front left motor",leftFrontMotor.getMotorVoltage().getValue());
-    leftBackMotor.set("Back left motor",leftBackMotor.getMotorVoltage().getValue());
+    SmartDashboard.putNumber("Front right motor",rightFrontMotor.getMotorVoltage().getValue());
+    SmartDashboard.putNumber("Back right motor",rightBackMotor.getMotorVoltage().getValue());
+    SmartDashboard.putNumber("Front left motor",leftFrontMotor.getMotorVoltage().getValue());
+    SmartDashboard.putNumber("Back left motor",leftBackMotor.getMotorVoltage().getValue());
     //SmartDashboard
     // This method will be called once per scheduler run
   }
