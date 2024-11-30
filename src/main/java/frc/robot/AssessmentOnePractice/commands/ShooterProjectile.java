@@ -1,6 +1,6 @@
-package frc.robot.AssessmentOnePractice;
-import frc.robot.AssessmentOnePractice.ShooterSubsystem;
+package frc.robot.AssessmentOnePractice.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.AssessmentOnePractice.subsystems.ShooterSubsystem;
 import edu.wpi.first.wpilibj.XboxController;
 public class ShooterProjectile extends CommandBase {
     private final ShooterSubsystem shooterSubsystem;

@@ -1,35 +1,43 @@
-import edu.wpi.first.wpilibj2.button.CommandXboxController.xboxcontroller;
-import edu,wpi.first.wpilibj2.CommandXboxController.joystick;
-import frc.robot.subsystems.ShooterAngleSubsystem;
+package frc.robot.AssessmentZero;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.AssessmentZero.ShooterMotorSubsystem;
 
-public class AdjustAngleShooter extends CommandBase {
-  private final ShooterAngleSubsystem shooterAngleMotor;
-  private final joystick = CommandXboxController joystick;
+public class AdjustAngleShooter extends CommandBase{
+  private final ShooterMotorSubsystem bottomShooterMotor;
+  private final ShooterMotorSubsystem topShooterMotor;
+  
+  private final XboxController joystick;
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public AdjustAngleShooter(ShooterAngleSubsystem shooterAngleMotor) {
-    this.ShooterAngleSubsystem = shooterAngleMotor;
-    this.joystick = joystick;
-    addRequirements(shooterAngleMotor);
+  public AdjustAngleShooter(ShooterMotorSubsystem topShooterMotor,ShooterMotorSubsystem bottomShooterMotor) {
+    this.joystick = new XboxController(0);
+    this.bottomShooterMotor = bottomShooterMotor;
+    this.topShooterMotor = topShooterMotor;
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    shooterAngleMotor.coast();
+    bottomShooterMotor.coast();
+    topShooterMotor.coast();
   }
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    shooterAngleMotor.runShooterMotor(joystick.getLeftY());
+    topShooterMotor.runTopMotor(joystick.getLeftY());
+    bottomShooterMotor.runBottomMotor(joystick.getLeftY());
+
   }
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    shooterAngleMotor.brake();
+    bottomShooterMotor.brake();
+    topShooterMotor.brake();
     
   }
 

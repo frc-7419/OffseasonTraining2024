@@ -3,39 +3,39 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot.AssessmentOnePractice.commands;
+import com.ctre.phoenix6.controls.compound.Diff_VelocityDutyCycle_Position;
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.AssessmentOnePractice.subsystems.ArmSubsystem;
+import frc.robot.AssessmentOnePractice.subsystems.DriveBaseSubsystem;
 import edu.wpi.first.wpilibj.XboxController;
 
-public class MoveArmWithJoystick extends CommandBase {
-  private final ArmSubsystem armSubsystem;
-  private final XboxController xboxController;
 
-  /** Creates a new MoveArmWithJoystick. */
-  public MoveArmWithJoystick(ArmSubsystem armSubsystem, XboxController xboxController) {
-    this.armSubsystem = armSubsystem;
-    this.xboxController = new XboxController(0);
-
+public class TankDrive extends CommandBase {
+  private DriveBaseSubsystem driveBaseSubsystem;
+  private XboxController xboxController;
+  /** Creates a new ArcadeDrive. */
+  public TankDrive(DriveBaseSubsystem driveBaseSubsystem, XboxController xboxController) {
+    this.driveBaseSubsystem = driveBaseSubsystem;
+    this.xboxController = xboxController;
     // Use addRequirements() here to declare subsystem dependencies.
   }
-
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    armSubsystem.coast();
+    driveBaseSubsystem.coast();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    armSubsystem.runMotor(xboxController.getLeftX());
+    double move = 0.7 * -xboxController.getLeftY();
+    double turn = 0.7* xboxController.getRightX();
+    driveBaseSubsystem.runMotor(move+turn,move-turn);
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-    armSubsystem.brake();
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override
