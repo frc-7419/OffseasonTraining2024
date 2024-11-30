@@ -10,15 +10,14 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class SetArmToPoint extends CommandBase {
    private final ArmSubsystem armSubsystem;
-   private double setpoint;
+   private final double setPoint;
    private final PIDController pidController = new PIDController(1.0,0.0,0.1);
    private final ArmFeedforward feedforward = new ArmFeedforward(0.0,1.0,0.5,0.1);
-   private final 
 
 
 
 
- public SetArmToPoint (ArmSubsystem armSubsystem, double setpoint) {
+ public SetArmToPoint (ArmSubsystem armSubsystem, double setPoint) {
    this.armSubsystem = armSubsystem;
    this.setPoint = setPoint;   
  }
@@ -27,8 +26,8 @@ public class SetArmToPoint extends CommandBase {
  // Called when the command is initially scheduled.
  @Override
  public void initialize() {
-   armSubsystem.coast():
-   armSubsystem.setPower(0);
+   armSubsystem.coast();
+   armSubsystem.runMotor(0);
    pidController.setTolerance(5,10);
    pidController.setSetpoint(setPoint);
   
@@ -39,9 +38,9 @@ public class SetArmToPoint extends CommandBase {
  @Override
  public void execute() {
    double currentPosiiton = armSubsystem.getPosition();
-   double ff = armFeedforward.calculate(currentPosition,setPoint); //feedforward, ask lead`
+   double ff = feedforward.calculate(currentPosition,setPoint); //feedforward, ask lead`
    double pidValue = pidController.calculate(currentPosition);
-   armSubsystem.setPower(pidValue+ff);
+   armSubsystem.runMotor(pidValue+ff);
    //pid value+ feedForward
   
  }
@@ -50,7 +49,7 @@ public class SetArmToPoint extends CommandBase {
  // Called once the command ends or is interrupted.
  @Override
  public void end(boolean interrupted) {
-   armSubsystem.setPower(0);
+   armSubsystem.runMotor(0);
    armSubsystem.brake();
   
  }
@@ -59,7 +58,7 @@ public class SetArmToPoint extends CommandBase {
  // Returns true when the command should end.
  @Override
  public boolean isFinished() {
-   return pidController.atSetPoint();
+   return pidController.atSetpoint();
    //at the desired point
  }
 }
