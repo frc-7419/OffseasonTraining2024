@@ -3,23 +3,22 @@
 // // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot.commands;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.subsystems.ArmSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-public class ExampleCommand extends CommandBase {
+public class RunArmWithJoystick extends CommandBase {
   private final ArmSubsystem armSubsystem;
-  private final CommandXboxController joystick;
+  private final XboxController joystick;
 
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public ExampleCommand(ArmSubsystem armSubsystem,CommandXboxController joystick) {
+  public RunArmWithJoystick(ArmSubsystem armSubsystem,XboxController joystick) {
     this.armSubsystem = armSubsystem;
     this.joystick = joystick;
-    addRequirements(subsystem);
   }
 
   // Called when the command is initially scheduled.

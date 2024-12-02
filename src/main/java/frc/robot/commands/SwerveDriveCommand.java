@@ -4,26 +4,48 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.subsystems.SwerveDriveSubsystem;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
-public class SwerveDriveCommand extends Command {
+public class SwerveDriveCommand extends CommandBase {
+  private final XboxController xboxController;
+  private final SwerveDriveSubsystem swerveDriveSubsystem;
+  private double xSpeed;
+  private  double ySpeed;
+  private double rotation;
   /** Creates a new SwerveDriveCommand. */
-  public SwerveDriveCommand() {
+  public SwerveDriveCommand(SwerveDriveSubsystem swerveDriveSubsystem,XboxController xboxController,double rotation, double xSpeed, double ySpeed) {
+    this.swerveDriveSubsystem = swerveDriveSubsystem;
+    this.xboxController = new XboxController(0);
+    this.rotation = rotation;
+    this.xSpeed = xSpeed;
+    this.ySpeed = ySpeed;
+
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    swerveDriveSubsystem.drive(0,0,0);
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    xSpeed = xboxController.getLeftX();
+    ySpeed = xboxController.getLeftY();
+    rotation = xboxController.getRightX();
+    swerveDriveSubsystem.drive(xSpeed,ySpeed,rotation);
+  }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    swerveDriveSubsystem.drive(0,0,0);
+  }
 
   // Returns true when the command should end.
   @Override
