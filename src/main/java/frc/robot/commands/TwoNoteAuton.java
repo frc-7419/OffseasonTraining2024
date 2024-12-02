@@ -24,6 +24,7 @@ public class TwoNoteAuton extends ParallelCommandGroup {
       new RunArm(armMotor),
       new ShooterCommand(shooterSubsystem),
       new WaitCommand(2)
+      new SetArmToPoint(armMotor, 100),
   );
   // Second sequence: Swerve drive followed by a 3-second wait
   new SequentialCommandGroup(
