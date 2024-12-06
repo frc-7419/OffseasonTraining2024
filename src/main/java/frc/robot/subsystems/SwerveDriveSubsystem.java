@@ -2,7 +2,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class SwerveDrive extends SubsystemBase {
+public class SwerveDriveSubsystem extends SubsystemBase {
     private static final double DEAD_BAND = 0.05; // Define a deadband threshold
     // Create instances of SwerveModules
     private SwerveModule leftFront;
@@ -10,7 +10,7 @@ public class SwerveDrive extends SubsystemBase {
     private SwerveModule leftBack;
     private SwerveModule rightBack;
 
-    public SwerveDrive() {
+    public SwerveDriveSubsystem() {
       this.rightFront = new SwerveModule(0, 4, 8, 9, 0.1, 0, 0);
       this.rightBack =  new SwerveModule(1, 5, 10, 11, 0.1, 0, 0);
       this.leftFront =  new SwerveModule(2, 6, 12, 13, 0.1, 0, 0);
