@@ -5,7 +5,10 @@
 package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
+<<<<<<< HEAD
 import frc.robot.commands.AutonExample;
+=======
+>>>>>>> a6a2d0c4297c15b2a97ced57742691793d421cdf
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -57,9 +60,16 @@ public class RobotContainer {
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
    * @return the command to run in autonomous
+<<<<<<< HEAD
   //  */
   // public Command getAutonomousCommand() {
   //   // An example command will be run in autonomous
   //   // return Auton.exampleAuto(m_exampleSubsystem);
+=======
+   */
+  // public Command getAutonomousCommand() {
+  //   // An example command will be run in autonomous
+  //   return Auton.exampleAuto(m_exampleSubsystem);
+>>>>>>> a6a2d0c4297c15b2a97ced57742691793d421cdf
   // }
 }
