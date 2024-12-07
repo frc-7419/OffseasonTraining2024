@@ -2,8 +2,8 @@ package frc.robot.commands;
 import frc.robot.subsystems.DriveBaseSubsystem;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-public class ArcadeDrive extends CommandBase {
-    
+
+public class ArcadeDrive extends CommandBase{
 
     private final DriveBaseSubsystem driveBaseSubsystem;
     private final XboxController controller;
@@ -11,6 +11,7 @@ public class ArcadeDrive extends CommandBase {
     public ArcadeDrive(DriveBaseSubsystem driveBaseSubsystem, XboxController controller) {
         this.driveBaseSubsystem = driveBaseSubsystem;
         this.controller = controller;
+        addRequirements(driveBaseSubsystem);
     }
 
     @Override
