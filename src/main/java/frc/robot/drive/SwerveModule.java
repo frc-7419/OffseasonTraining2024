@@ -59,7 +59,7 @@ public SwerveModule(int turnMotorId, int driveMotorId, int turnEncoderId, double
     this.turnCoder = new CANcoder(turnEncoderId);
     this.module = "";
     angleController.enableContinuousInput(0, 360);
-    turnCoder.configMagnetOffset(turnEncoderOffset/360);
+    turnCoder.setPosition(turnEncoderOffset);
     
     //damn bro everything is deprecated
     Rotation2d rotation2d = new Rotation2d();
@@ -75,10 +75,8 @@ private void coast(){
 private void brake(){
     turnMotor.setIdleMode(IdleMode.kBrake);
     driveMotor.setIdleMode(IdleMode.kBrake);
-    turnMotor.setVoltage(0);
-    driveMotor.setVoltage(0);
 }
-private void execute(double power){
+private void setVoltage(double power){
     turnMotor.setVoltage(power);
     driveMotor.setVoltage(power);
     
@@ -99,6 +97,6 @@ private double driveEncoderPosition(){
     return driveCoder.getPosition();
 }
 private void setState(SwerveModuleState moduleState){
-    moduleState = SwerveModuleState.optimize(moduleState, turnCoder.getAbsolutePosition());
+    SwerveModule newModuleState = SwerveModuleState.optimize(moduleState, turnCoder.getAbsolutePosition().getValueAsDouble());//convert this to degrees and or use the unit class
 }
     }
